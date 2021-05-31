@@ -48,7 +48,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 
     $.ajax({
 
-        url:"ajax/usuarios.ajax.php",
+        url:"ajax/UsersAjax.php",
         method: "POST",
         data: datos,
         cache: false,
