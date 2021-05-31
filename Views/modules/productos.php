@@ -32,7 +32,10 @@
       </div>
       <div class="card-body">
 
-        <table id="tabla" class="table table-bordered table-striped productTable display nowrap" style="width: 100%">
+        <table
+          class="table table-bordered table-striped productTable display nowrap"
+          style="width: 100%">
+
           <thead>
           <tr>
 
@@ -53,46 +56,46 @@
           <tbody>
 
           <?php
-
-            $item = null;
-            $valor = null;
-            $products = ProductosController::controllerMostrarProductos($item, $valor);
-
-            foreach($products as $key => $value){
-
-              echo ' <tr>
-                        <td class="text-center">' . ($key + 1) . '</td>
-                        <td class="text-center">
-                          <img
-                          	src="Views/img/productos/default/anonymous.png"
-                          	class=" img-thumbnail"
-                          	alt="imagen-producto"
-                          	width="40px">
-                        </td>
-                        <td class="text-center">' . $value["codigo"] . '</td>
-                        <td>' . $value["descripcion"] . '</td>';
-
-              $item = "id";
-              $valor = $value["idCategoria"];
-
-              $categories = CategoriasController::controllerMostrarCategoria($item, $valor);
-
-
-              echo '<td>' . $categories["categoria"] . '</td>
-                        <td class="text-center">' . $value["stock"] . '</td>
-                        <td class="text-right"><strong>Q. </strong>' . $value["precioCompra"] . '</td>
-                        <td class="text-right"><strong>Q. </strong>' . $value["precioVenta"] . '</td>
-                        <td class="text-center">' . $value["fecha"] . '</td>
-                        <td>
-                          <div class="btn-group">
-                            <button type="" class="btn btn-warning"><i class="fa fa-pen text-white"></i></button>
-                            <button type="" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                          </div>
-                        </td>
-                      </tr>';
-
-            }
-          ?>
+            //
+            //            $item = null;
+            //            $valor = null;
+            //            $products = ProductosController::controllerMostrarProductos($item, $valor);
+            //
+            //            foreach($products as $key => $value){
+            //
+            //              echo ' <tr>
+            //                        <td class="text-center">' . ($key + 1) . '</td>
+            //                        <td class="text-center">
+            //                          <img
+            //                          	src="Views/img/productos/default/anonymous.png"
+            //                          	class=" img-thumbnail"
+            //                          	alt="imagen-producto"
+            //                          	width="40px">
+            //                        </td>
+            //                        <td class="text-center">' . $value["codigo"] . '</td>
+            //                        <td>' . $value["descripcion"] . '</td>';
+            //
+            //              $item = "id";
+            //              $valor = $value["idCategoria"];
+            //
+            //              $categories = CategoriasController::controllerMostrarCategoria($item, $valor);
+            //
+            //
+            //              echo '<td>' . $categories["categoria"] . '</td>
+            //                        <td class="text-center">' . $value["stock"] . '</td>
+            //                        <td class="text-right"><strong>Q. </strong>' . $value["precioCompra"] . '</td>
+            //                        <td class="text-right"><strong>Q. </strong>' . $value["precioVenta"] . '</td>
+            //                        <td class="text-center">' . $value["fecha"] . '</td>
+            //                        <td>
+            //                          <div class="btn-group">
+            //                            <button type="" class="btn btn-warning"><i class="fa fa-pen text-white"></i></button>
+            //                            <button type="" class="btn btn-danger"><i class="fa fa-times"></i></button>
+            //                          </div>
+            //                        </td>
+            //                      </tr>';
+            //
+            //            }
+            //          ?>
 
           </tbody>
 
