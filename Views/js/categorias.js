@@ -10,7 +10,7 @@ $("#nuevaCategoria").change(function () {
     datos.append("validarCategoria", categoria)
     
     $.ajax({
-        url: "ajax/CategoriesAjax.php",
+        url: "ajax/Categories.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -39,7 +39,7 @@ $(document).on("click", ".btnEditarCategoria", function(){
 
     $.ajax({
 
-        url:"ajax/CategoriesAjax.php",
+        url:"ajax/Categories.ajax.php",
         method: "POST",
         data: datos,
         cache: false,

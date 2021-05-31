@@ -32,7 +32,7 @@
       </div>
       <div class="card-body">
 
-        <table id="tabla" class="table table-bordered table-striped display nowrap" style="width: 100%">
+        <table id="tabla" class="table table-bordered table-striped productTable display nowrap" style="width: 100%">
           <thead>
           <tr>
 

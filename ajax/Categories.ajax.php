@@ -3,7 +3,7 @@
 require_once "../Controllers/CategoriasController.php";
 require_once "../Models/CategoriasModel.php";
 
-class CategoriesAjax{
+class Categories{
     
     // VALIDAR SI CATEGORÍA ESTA REGISTRADA 
     public $validarCategoria;
@@ -36,7 +36,7 @@ class CategoriesAjax{
 // VALIDAR CATEGORÍA NO SE REPETITE
 if(isset($_POST["validarCategoria"])){
 
-    $validarCategoria = new CategoriesAjax();
+    $validarCategoria = new Categories();
     $validarCategoria -> validarCategoria = $_POST['validarCategoria'];
     $validarCategoria -> ajaxValidarCategoria();
 
@@ -46,7 +46,7 @@ if(isset($_POST["validarCategoria"])){
 // EDITAR USUARIOS
 if(isset($_POST["idCategoria"])){
 
-    $editar = new CategoriesAjax();
+    $editar = new Categories();
     $editar -> idCategoria = $_POST['idCategoria'];
     $editar -> ajaxEditarCategoria();
 

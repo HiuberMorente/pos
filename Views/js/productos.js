@@ -1,3 +1,5 @@
+
+
 // CARGAR TABLAS DINÁMICAS PRODUCTOS
 $.ajax({
 
@@ -8,4 +10,8 @@ $.ajax({
 
     }
 
+});
+
+$('.productTable').DataTable({
+   "ajax": "ajax/ProductsDatatable.ajax.php"
 });

@@ -1,6 +1,6 @@
 <?php
 
-class ProductsDatatableAjax{
+class ProductsDatatable{
 
     // MOSTRAR TABLA PRODUCTOS
     public function showProductsTable():void{
@@ -10,5 +10,5 @@ class ProductsDatatableAjax{
 
 
 // ACTIVAR TABLA PRODUCTOS
-$activateProducts = new ProductsDatatableAjax();
+$activateProducts = new ProductsDatatable();
 $activateProducts -> showProductsTable();

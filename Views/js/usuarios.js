@@ -48,7 +48,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 
     $.ajax({
 
-        url:"ajax/UsersAjax.php",
+        url:"ajax/Users.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -86,7 +86,7 @@ $(document).on("click", ".btnActivar", function() {
     datos.append("activarUsuario", estadoUsuario);
 
     $.ajax({
-        url: "ajax/usuarios.ajax.php",
+        url: "ajax/Users.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -138,7 +138,7 @@ $("#nuevoUsuario").change(function () {
     datos.append("validarUsuario", usuario)
     
     $.ajax({
-        url: "ajax/usuarios.ajax.php",
+        url: "ajax/Users.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
