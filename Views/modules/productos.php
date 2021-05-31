@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="inicio" class=" text-dark"></i>Inicio</a></li>
+            <li class="breadcrumb-item"><a href="inicio" class=" text-dark">Inicio</a></li>
             <li class="breadcrumb-item active">Administrar productos</li>
           </ol>
         </div>
@@ -32,11 +32,11 @@
       </div>
       <div class="card-body">
 
-        <table id="tabla" class="table table-bordered table-striped display nowrap" width="100%">
+        <table id="tabla" class="table table-bordered table-striped display nowrap" style="width: 100%">
           <thead>
           <tr>
 
-            <th width="10px" class="text-center">#</th>
+            <th style="width: 10px%" class="text-center">#</th>
             <th class="text-center">Imagen</th>
             <th class="text-center">Código</th>
             <th class="text-center">Descripción</th>
@@ -56,9 +56,9 @@
 
             $item = null;
             $valor = null;
-            $productos = ProductosController::controllerMostrarProductos($item, $valor);
+            $products = ProductosController::controllerMostrarProductos($item, $valor);
 
-            foreach ($productos as $key => $value) {
+            foreach($products as $key => $value){
 
               echo ' <tr>
                         <td class="text-center">' . ($key + 1) . '</td>
@@ -75,10 +75,10 @@
               $item = "id";
               $valor = $value["idCategoria"];
 
-              $categoria = CategoriasController::controllerMostrarCategoria($item, $valor);
+              $categories = CategoriasController::controllerMostrarCategoria($item, $valor);
 
 
-              echo '<td>' . $categoria["categoria"] . '</td>
+              echo '<td>' . $categories["categoria"] . '</td>
                         <td class="text-center">' . $value["stock"] . '</td>
                         <td class="text-right"><strong>Q. </strong>' . $value["precioCompra"] . '</td>
                         <td class="text-right"><strong>Q. </strong>' . $value["precioVenta"] . '</td>
@@ -107,7 +107,7 @@
 
 
 <!--==================================
-MODAL
+MODAL INGRESO PRODUCTO
 ==================================-->
 <!-- Modal -->
 <div
@@ -147,24 +147,26 @@ MODAL BODY
                 <span class="input-group-text">
                   <i class="fa fa-code"></i>
                 </span>
-                <input
-                  type="text"
-                  class="form-control input-lg"
-                  name="nuevoCodigo"
-                  placeholder="Ingresar código" required>
+                  <input
+                    type="text"
+                    class="form-control input-lg"
+                    name="nuevoCodigo"
+                    placeholder="Ingresar código"
+                    aria-label="nuevoCodigo" required>
               </div>
 
               <!-- Descripción -->
 
               <div class="input-group mb-3">
                 <span class="input-group-text">
-                  <i class="fa fa-product-hunt"></i>
+                  <i class="fab fa-product-hunt"></i>
                 </span>
-                <input
-                  type="text"
-                  class="form-control input-lg"
-                  name="nuevaDescripcion"
-                  placeholder="Ingresar descripción" required>
+                  <input
+                    type="text"
+                    class="form-control input-lg"
+                    name="nuevaDescripcion"
+                    placeholder="Ingresar descripción"
+                    aria-label="nuevaDescripcion" required>
               </div>
 
               <!-- Categoría -->
@@ -173,12 +175,13 @@ MODAL BODY
                 <span class="input-group-text">
                   <i class="fa fa-th"></i>
                 </span>
-                <select name="nuevaCategoria" class="form-select text-gray">
-                  <option value="">Selecionar categoría</option>
-                  <option value="Talados">Talados</option>
-                  <option value="Andamios">Andamios</option>
-                  <option value="Equipo de construccion">Equipo de construccion</option>
-                </select>
+                  <select name="nuevaCategoria" class="form-select text-gray" aria-label="nuevaCategoria" >
+                    <option value="">Selecionar categoría</option>
+                    <option value="Talados">Talados</option>
+                    <option value="Andamios">Andamios</option>
+                    <option value="Equipo de construccion">Equipo de construccion</option>
+                  </select>
+
               </div>
 
               <!-- Stock -->
@@ -187,8 +190,15 @@ MODAL BODY
                 <span class="input-group-text">
                   <i class="fa fa-check"></i>
                 </span>
-                <input type="number" class="form-control input-lg" name="nuevoStock" min="0"
-                       placeholder="Stock" required>
+
+                <input
+                  type="number"
+                  class="form-control input-lg"
+                  name="nuevoStock"
+                  min="0"
+                  placeholder="Stock"
+                  aria-label="nuevoStock" required>
+
               </div>
 
               <div class="row">
@@ -199,8 +209,15 @@ MODAL BODY
                     <span class="input-group-text">
                       <i class="fa fa-money-bill-wave"></i>
                     </span>
-                    <input type="number" class="form-control input-lg" name="nuevoPrecioCompra"
-                           min="0" placeholder="Precio de compra" required>
+
+                      <input
+                      	type="number"
+                      	class="form-control input-lg"
+                        name="nuevoPrecioCompra"
+                        min="0"
+                        placeholder="Precio de compra"
+                        aria-label="nuevoPrecioCompra" required>
+
                   </div>
                 </div>
 
@@ -210,19 +227,28 @@ MODAL BODY
                     <span class="input-group-text">
                       <i class="fa fa-money-bill-wave"></i>
                     </span>
-                    <input type="number" class="form-control input-lg" name="nuevoPrecioVenta"
-                           min="0" placeholder="Precio de venta" required>
+
+                      <input
+                      	type="number"
+                      	class="form-control input-lg"
+                        name="nuevoPrecioVenta"
+                        min="0"
+                        placeholder="Precio de venta"
+                        aria-label="nuevoPrecioVenta"
+                        required>
+
                   </div>
 
 
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-sm-6">
                       <!-- checkbox -->
+
                       <div class="input-group mb-3">
 
                         <div class="icheck-primary d-inline">
-                          <input type="checkbox" id="" checked>
-                          <label for="">
+                          <input type="checkbox" id="checkboxPrimary1" checked>
+                          <label for="checkboxPrimary1">
                             Utilizar porcentaje
                           </label>
                         </div>
@@ -233,12 +259,19 @@ MODAL BODY
                     </div>
 
                     <!-- Entrada Porcentaje -->
-                    <div class="col-lg-6">
-                      <div class="input-group mb-3" style="padding: 0;">
+                    <div class="col-sm-6">
+                      <div class="input-group mb-3">
                         <span class="input-group-text"> <i class="fa fa-percent"></i> </span>
 
-                        <input type="number" class="form-control inpug-lg nuevoPorcentaje"
-                               min="0" value="20" required>
+                          <input
+                          	type="number"
+                            class="form-control inpug-lg nuevoPorcentaje"
+                            min="0"
+                            value="20"
+                            aria-label="porcentaje"
+                            style="padding: 0 0 0 10px;"
+                            required>
+
                       </div>
                     </div>
 
@@ -259,8 +292,8 @@ MODAL BODY
                   <input type="file" id="nuevaImagen" name="nuevaImagen">
                   <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-                  <img src="Views/img/productos/default/anonymous.png" alt="imag-subir"
-                       class="img-fluid img-thumbnail" width="100px">
+                  <img src="/Views/img/productos/default/anonymous.png" alt="imag-subir"
+                       class="img-fluid img-thumbnail" style="width: 100px">
                 </div>
               </div>
 

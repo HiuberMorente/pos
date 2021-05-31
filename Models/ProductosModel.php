@@ -1,36 +1,30 @@
 <?php
 
+  require_once "Connection.php";
+
   class ProductosModel{
 
     // MOSTRAR PRODUCTOS
-    static public function modelMostrarProductos($tabla, $item, $valor){
+    public static function modelMostrarProductos($tabla, $item, $valor){
 
-      if($item != null){
+      if($item !== null){
 
-        $statement = Connection ::connect() -> prepare("SELECT * FROM $tabla WHERE $item = :$item");
+        $statement = Connection::connect()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 
-        $statement -> bindParam(":" . $item, $valor, PDO::PARAM_STR);
+        $statement->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
-        $statement -> execute();
+        $statement->execute();
 
-        return $statement -> fetch();
-
-        $statement -> closeCursor();
-
-        $statement = null;
-
-      } else{
-
-        $statement = Connection ::connect() -> prepare("SELECT * FROM $tabla");
-
-        $statement -> execute();
-
-        return $statement -> fetchAll();
-
-        $statement -> closeCursor();
-
-        $statement = null;
+        return $statement->fetch();
 
       }
+
+      $statement = Connection::connect()->query("SELECT * FROM $tabla");
+
+      $statement->execute();
+
+      return $statement->fetchAll();
+
     }
+
   }

@@ -1,17 +1,15 @@
 <?php
 
-  class ProductosController
-  {
+  class ProductosController{
 
     // MOSTRAR PRODUCTOS
-    static public function controllerMostrarProductos($item, $valor)
-    {
+    public static function controllerMostrarProductos($item, $valor){
 
       $tabla = "productos";
 
-      $respuesta = ProductosModel::modelMostrarProductos($tabla, $item, $valor);
+      return ProductosModel ::modelMostrarProductos($tabla, $item, $valor);
 
-      return $respuesta;
+
     }
 
   }
