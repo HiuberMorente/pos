@@ -16,32 +16,55 @@
     public function showProductsTable():void{
 
 
-      $buttons = "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pen text-white'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";
-
       $item = null;
       $valor = null;
 
       $products = ProductosController::controllerMostrarProductos($item, $valor);
 
-      $sizeProducts = count($products);
-
       $jsonData = '{
                     "data": [';
 
-      for($indice = 0; $indice < $sizeProducts; $indice++){
+      foreach($products as $key => $product){
 
-        $image = "<img src='". $products[$indice]["imagen"]."' alt='productImage' style='width: 40px;'>";
+        $image = "<img src='". $product["imagen"]."' alt='productImage' style='width: 40px;'>";
+
+        $buttons = "<div class='btn-group'><button class='btn btn-warning btnEditProducts' idProduct='"
+           . $product["id"]."' data-bs-toggle='modal' data-bs-target='#modalEditProduct'><i class='fa fa-pen text-white'></i></button><button class='btn btn-danger btnDeleteProduct' idProduct='"
+           . $product["id"]."' codigo='". $product["codigo"]."' image='". $product["imagen"]
+           ."'><i class='fa fa-times'></i></button></div>";
+
+        $item = "id";
+        $valor = $products[$key]["idCategoria"];
+
+        $categories = CategoriasController::showCategories($item, $valor);
+
+//          STOCK COLOR
+        if($product["stock"] <= 10){
+
+          $stock = "<button class='btn btn-danger'>". $product["stock"]."</button>";
+
+        }elseif($product["stock"] > 11 && $product["stock"] <= 15){
+
+          $stock = "<button class='btn btn-warning'>". $product["stock"]."</button>";
+
+        }else{
+
+          $stock = "<button class='btn btn-success'>". $product["stock"]."</button>";
+
+        }
+
+
 
         $jsonData .= '[
-                        "'.($indice + 1).'",
+                        "'.($key + 1).'",
                         "'.$image.'",
-                        "'. $products[$indice]["codigo"].'",
-                        "'. $products[$indice]["descripcion"].'",
-                        "Taladros",
-                        "'. $products[$indice]["stock"].'",
-                        "'. $products[$indice]["precioCompra"].'",
-                        "'. $products[$indice]["precioVenta"].'",
-                        "'. $products[$indice]["fecha"].'",
+                        "'. $product["codigo"].'",
+                        "'. $product["descripcion"].'",
+                        "'.$categories["categoria"].'",
+                        "'. $stock.'",
+                        "'. $product["precioCompra"].'",
+                        "'. $product["precioVenta"].'",
+                        "'. $product["fecha"].'",
                         "'.$buttons.'"
                       ],';
       }

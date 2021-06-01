@@ -52,7 +52,7 @@
                   $item = null;
                   $valor = null;
 
-                  $categorias = CategoriasController::controllerMostrarCategoria($item, $valor);
+                  $categorias = CategoriasController::showCategories($item, $valor);
 
                   foreach ($categorias as $key => $value) {
 

@@ -5,7 +5,7 @@
 
 
     // MOSTRAR CATEGORIAS
-    static public function controllerMostrarCategoria($item, $valor){
+    static public function showCategories($item, $valor){
 
       $tabla = "categorias";
 

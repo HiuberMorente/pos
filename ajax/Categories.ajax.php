@@ -12,7 +12,7 @@ class Categories{
 
         $item = "categoria";
         $valor = $this -> validarCategoria;
-        $respuesta = CategoriasController::controllerMostrarCategoria($item, $valor);
+        $respuesta = CategoriasController::showCategories($item, $valor);
 
         echo json_encode($respuesta);   
         
@@ -25,7 +25,7 @@ class Categories{
 
         $item = "id";
         $valor = $this -> idCategoria;
-        $respuesta = CategoriasController::controllerMostrarCategoria($item, $valor);
+        $respuesta = CategoriasController::showCategories($item, $valor);
 
         echo json_encode($respuesta);        
     }

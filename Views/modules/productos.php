@@ -145,6 +145,34 @@ MODAL BODY
             <div class="form-group">
 
 
+              <!-- Categoría -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa fa-th"></i>
+                </span>
+                <select
+                  name="nuevaCategoria"
+                  class="form-select text-gray"
+                  aria-label="nuevaCategoria"
+                  required>
+                  <option value="">Selecionar categoría</option>
+
+                  <?php
+
+                    $categories = CategoriasController::showCategories(null, null);
+
+                    foreach($categories as $key => $category){
+                      echo '<option value="' . $category["id"] . '">' . $category["categoria"] . '</option>';
+                    }
+
+                  ?>
+
+
+                </select>
+              </div>
+
+
               <!-- codigo -->
               <div class="input-group mb-3">
                 <span class="input-group-text">
@@ -172,20 +200,6 @@ MODAL BODY
                     aria-label="nuevaDescripcion" required>
               </div>
 
-              <!-- Categoría -->
-
-              <div class="input-group mb-3">
-                <span class="input-group-text">
-                  <i class="fa fa-th"></i>
-                </span>
-                  <select name="nuevaCategoria" class="form-select text-gray" aria-label="nuevaCategoria" >
-                    <option value="">Selecionar categoría</option>
-                    <option value="Talados">Talados</option>
-                    <option value="Andamios">Andamios</option>
-                    <option value="Equipo de construccion">Equipo de construccion</option>
-                  </select>
-
-              </div>
 
               <!-- Stock -->
 

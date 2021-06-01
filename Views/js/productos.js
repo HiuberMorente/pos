@@ -1,19 +1,22 @@
 // CARGAR TABLAS DINÁMICAS PRODUCTOS
-$.ajax({
-
-  url: "ajax/ProductsDatatable.ajax.php",
-  success: function (respuesta) {
-
-    console.log("respuesta", respuesta);
-
-  }
-
-});
+// $.ajax({
+//
+//   url: "ajax/ProductsDatatable.ajax.php",
+//   success: function (respuesta) {
+//
+//     console.log("respuesta", respuesta);
+//
+//   }
+//
+// });
 
 
 $('.productTable').DataTable({
   responsive: true,
   "ajax": "ajax/ProductsDatatable.ajax.php",
+  "deferRender": true,
+  "retrieve": true,
+  "processing": true,
   "language": {
     "processing": "Procesando...",
     "lengthMenu": "Mostrar _MENU_ registros",

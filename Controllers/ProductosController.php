@@ -9,7 +9,6 @@
 
       return ProductosModel ::modelMostrarProductos($tabla, $item, $valor);
 
-
     }
 
   }
