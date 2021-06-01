@@ -3,7 +3,7 @@
   require_once "../Controllers/UsuariosController.php";
   require_once "../Models/UsuariosModel.php";
 
-  class Users{
+  class UsersAjax{
 
     // EDITAR USUARIOS
     public $userId;
@@ -70,7 +70,7 @@
 // EDITAR USUARIOS
   if(isset($_POST["idUsuario"])){
 
-    $edit = new Users();
+    $edit = new UsersAjax();
     $edit->userId = $_POST['idUsuario'];
     $edit->ajaxEditarUsuario();
 
@@ -80,7 +80,7 @@
 
   if(isset($_POST["activarUsuario"])){
 
-    $activateUser = new Users();
+    $activateUser = new UsersAjax();
     $activateUser->activateUser = $_POST['activarUsuario'];
     $activateUser->activateId = $_POST['activarId'];
     $activateUser->ajaxActivarUsuario();
@@ -91,7 +91,7 @@
 // VALIDAR USUARIO NO SE REPETITE
   if(isset($_POST["validarUsuario"])){
 
-    $validateUser = new Users();
+    $validateUser = new UsersAjax();
     $validateUser->validateUser = $_POST['validarUsuario'];
     $validateUser->ajaxValidarUsuario();
 

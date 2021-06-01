@@ -9,7 +9,7 @@
 
       if($item !== null){
 
-        $statement = Connection::connect()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+        $statement = Connection::connect()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC");
 
         $statement->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 

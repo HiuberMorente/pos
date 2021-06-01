@@ -3,7 +3,7 @@
 require_once "../Controllers/CategoriasController.php";
 require_once "../Models/CategoriasModel.php";
 
-class Categories{
+class CategoriesAjax{
     
     // VALIDAR SI CATEGORÍA ESTA REGISTRADA 
     public $validarCategoria;
@@ -14,7 +14,7 @@ class Categories{
         $valor = $this -> validarCategoria;
         $respuesta = CategoriasController::showCategories($item, $valor);
 
-        echo json_encode($respuesta);   
+        echo json_encode($respuesta);
         
     }
 
@@ -36,7 +36,7 @@ class Categories{
 // VALIDAR CATEGORÍA NO SE REPETITE
 if(isset($_POST["validarCategoria"])){
 
-    $validarCategoria = new Categories();
+    $validarCategoria = new CategoriesAjax();
     $validarCategoria -> validarCategoria = $_POST['validarCategoria'];
     $validarCategoria -> ajaxValidarCategoria();
 
@@ -46,7 +46,7 @@ if(isset($_POST["validarCategoria"])){
 // EDITAR USUARIOS
 if(isset($_POST["idCategoria"])){
 
-    $editar = new Categories();
+    $editar = new CategoriesAjax();
     $editar -> idCategoria = $_POST['idCategoria'];
     $editar -> ajaxEditarCategoria();
 

@@ -10,7 +10,7 @@
 
 
 
-  class ProductsDatatable{
+  class ProductsDatatableAjax{
 
     // MOSTRAR TABLA PRODUCTOS
     public function showProductsTable():void{
@@ -84,5 +84,5 @@
 
 
 // ACTIVAR TABLA PRODUCTOS
-  $activateProducts = new ProductsDatatable();
+  $activateProducts = new ProductsDatatableAjax();
   $activateProducts->showProductsTable();

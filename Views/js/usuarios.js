@@ -4,7 +4,7 @@ $(".nuevaFoto").change(function(){
     var imagen = this.files[0];
     
     // VALIDAR FORMATO DE IMAGEN
-    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+    if (imagen["type"] !== "image/jpeg" && imagen["type"] !== "image/png") {
         
         $(".nuevaFoto").val("");
 
@@ -48,7 +48,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 
     $.ajax({
 
-        url:"ajax/Users.ajax.php",
+        url:"ajax/UsersAjax.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -65,7 +65,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 
             $("#passwordActual").val(respuesta["password"]);
 
-            if(respuesta["foto"] != ""){
+            if(respuesta["foto"] !== ""){
 
                 $(".previsualizar").attr("src", respuesta["foto"]);
                 
@@ -86,7 +86,7 @@ $(document).on("click", ".btnActivar", function() {
     datos.append("activarUsuario", estadoUsuario);
 
     $.ajax({
-        url: "ajax/Users.ajax.php",
+        url: "ajax/UsersAjax.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -107,7 +107,7 @@ $(document).on("click", ".btnActivar", function() {
         }
     });
     
-    if(estadoUsuario == 0){
+    if(estadoUsuario === 0){
 
         $(this).removeClass('btn-success');
         $(this).addClass('btn-danger');
@@ -138,7 +138,7 @@ $("#nuevoUsuario").change(function () {
     datos.append("validarUsuario", usuario)
     
     $.ajax({
-        url: "ajax/Users.ajax.php",
+        url: "ajax/UsersAjax.ajax.php",
         method: "POST",
         data: datos,
         cache: false,

@@ -154,6 +154,7 @@ MODAL BODY
                 <select
                   name="nuevaCategoria"
                   class="form-select text-gray"
+                  id="nuevaCategoria"
                   aria-label="nuevaCategoria"
                   required>
                   <option value="">Selecionar categoría</option>

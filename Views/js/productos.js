@@ -13,7 +13,7 @@
 
 $('.productTable').DataTable({
   responsive: true,
-  "ajax": "ajax/ProductsDatatable.ajax.php",
+  "ajax": "ajax/ProductsDatatableAjax.ajax.php",
   "deferRender": true,
   "retrieve": true,
   "processing": true,
@@ -196,4 +196,30 @@ $('.productTable').DataTable({
     },
     "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas"
   }
+});
+
+
+// CAPTURANDO CATEGORIA PARA ASIGNAR CODIGO
+$('#nuevaCategoria').change(function () {
+  let idCategoria = $(this).val();
+
+  let categoryData = new FormData();
+  categoryData.append("idCategoria", idCategoria);
+
+  $.ajax({
+    url: "ajax/ProductsAjax.ajax.php",
+    method: "POST",
+    data: categoryData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (result) {
+
+      let newCode = Number(result["codigo"]) + 1;
+      console.log(newCode);
+
+    }
+  })
+
 });
