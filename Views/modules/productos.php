@@ -179,12 +179,14 @@ MODAL BODY
                 <span class="input-group-text">
                   <i class="fa fa-code"></i>
                 </span>
-                  <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoCodigo"
-                    placeholder="Ingresar código"
-                    aria-label="nuevoCodigo" required>
+                <input
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoCodigo"
+                  id="nuevoCodigo"
+                  placeholder="Ingresar código"
+                  aria-label="nuevoCodigo"
+                  readonly>
               </div>
 
               <!-- Descripción -->
@@ -193,12 +195,12 @@ MODAL BODY
                 <span class="input-group-text">
                   <i class="fab fa-product-hunt"></i>
                 </span>
-                  <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevaDescripcion"
-                    placeholder="Ingresar descripción"
-                    aria-label="nuevaDescripcion" required>
+                <input
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevaDescripcion"
+                  placeholder="Ingresar descripción"
+                  aria-label="nuevaDescripcion" required>
               </div>
 
 
@@ -228,13 +230,14 @@ MODAL BODY
                       <i class="fa fa-money-bill-wave"></i>
                     </span>
 
-                      <input
-                      	type="number"
-                      	class="form-control input-lg"
-                        name="nuevoPrecioCompra"
-                        min="0"
-                        placeholder="Precio de compra"
-                        aria-label="nuevoPrecioCompra" required>
+                    <input
+                      type="number"
+                      class="form-control input-lg"
+                      name="nuevoPrecioCompra"
+                      id="nuevoPrecioCompra"
+                      min="0"
+                      placeholder="Precio de compra"
+                      aria-label="nuevoPrecioCompra" required>
 
                   </div>
                 </div>
@@ -246,30 +249,36 @@ MODAL BODY
                       <i class="fa fa-money-bill-wave"></i>
                     </span>
 
-                      <input
-                      	type="number"
-                      	class="form-control input-lg"
-                        name="nuevoPrecioVenta"
-                        min="0"
-                        placeholder="Precio de venta"
-                        aria-label="nuevoPrecioVenta"
-                        required>
+                    <input
+                      type="number"
+                      class="form-control input-lg"
+                      name="nuevoPrecioVenta"
+                      id="nuevoPrecioVenta"
+                      min="0"
+                      placeholder="Precio de venta"
+                      aria-label="nuevoPrecioVenta"
+                      required>
 
                   </div>
 
 
                   <div class="row">
                     <div class="col-sm-6">
-                      <!-- checkbox -->
 
+                      <!-- checkbox -->
                       <div class="input-group mb-3">
 
-                        <div class="icheck-primary d-inline">
-                          <input type="checkbox" id="checkboxPrimary1" checked>
-                          <label for="checkboxPrimary1">
-                            Utilizar porcentaje
-                          </label>
-                        </div>
+
+                        <label for="percentage">
+                          <input
+                            type="checkbox"
+                            id="percentage"
+                            class="icheckbox_minimal-blue percentage"
+                            checked>
+
+                          Utilizar porcentaje
+                        </label>
+
 
                       </div>
 
@@ -281,14 +290,14 @@ MODAL BODY
                       <div class="input-group mb-3">
                         <span class="input-group-text"> <i class="fa fa-percent"></i> </span>
 
-                          <input
-                          	type="number"
-                            class="form-control inpug-lg nuevoPorcentaje"
-                            min="0"
-                            value="20"
-                            aria-label="porcentaje"
-                            style="padding: 0 0 0 10px;"
-                            required>
+                        <input
+                          type="number"
+                          class="form-control inpug-lg nuevoPorcentaje"
+                          min="0"
+                          value="20"
+                          aria-label="porcentaje"
+                          style="padding: 0 0 0 10px;"
+                          required>
 
                       </div>
                     </div>

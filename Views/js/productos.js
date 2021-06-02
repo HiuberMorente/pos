@@ -9,6 +9,9 @@
 //   }
 //
 // });
+// noinspection JSCheckFunctionSignatures
+
+
 
 
 $('.productTable').DataTable({
@@ -184,9 +187,6 @@ $('.productTable').DataTable({
           "1": "¿Está seguro que desea eliminar 1 fila?"
         }
       },
-      "error": {
-        "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
-      },
       "multi": {
         "title": "Múltiples Valores",
         "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
@@ -216,10 +216,61 @@ $('#nuevaCategoria').change(function () {
     dataType: "json",
     success: function (result) {
 
-      let newCode = Number(result["codigo"]) + 1;
-      console.log(newCode);
+      if(!result){
+
+        let newCode = idCategoria + "01";
+        $("#nuevoCodigo").val(newCode);
+
+      }else{
+
+        let newCode = Number(result["codigo"]) + 1;
+        $("#nuevoCodigo").val(newCode);
+
+      }
 
     }
   })
 
 });
+
+
+// AGREGANDO PRECIO DE VENTA
+$('#nuevoPrecioCompra').change(function () {
+
+  if($('.percentage').prop('checked')){
+
+    let porcentageValue = $('.nuevoPorcentaje').val();
+
+
+    // noinspection JSJQueryEfficiency
+    let percentage =  Number($('#nuevoPrecioCompra').val() * porcentageValue/100) + Number($('#nuevoPrecioCompra').val());
+
+
+    $('#nuevoPrecioVenta').val(percentage);
+    $('#nuevoPrecioVenta').prop("readonly", true);
+  }
+
+});
+
+// CAMBIO DE PORCENTAJE
+$('.nuevoPorcentaje').change(function () {
+
+  if($('.percentage').prop('checked')){
+
+    let porcentageValue = $('.nuevoPorcentaje').val();
+
+
+    let percentage =  Number($('#nuevoPrecioCompra').val() * porcentageValue/100) + Number($('#nuevoPrecioCompra').val());
+
+
+    $('#nuevoPrecioVenta').val(percentage);
+    $('#nuevoPrecioVenta').prop("readonly", true);
+  }
+
+});
+
+
+$(".percentage").on("ifUnchecked", function () {
+  alert("cambiando");
+  console.log('no paso');
+})
