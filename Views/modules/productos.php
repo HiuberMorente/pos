@@ -272,8 +272,9 @@ MODAL BODY
                         <label for="percentage">
                           <input
                             type="checkbox"
-                            id="percentage"
                             class="icheckbox_minimal-blue percentage"
+                            id="percentage"
+                            onclick="checkboxSelected()"
                             checked>
 
                           Utilizar porcentaje
@@ -340,6 +341,12 @@ MODAL FOOTER
         </div>
 
       </form>
+
+      <?php
+        $createProduct = new ProductosController();
+        $createProduct -> controllerCreateProduct();
+      ?>
+
     </div>
   </div>
 

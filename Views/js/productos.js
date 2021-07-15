@@ -269,8 +269,25 @@ $('.nuevoPorcentaje').change(function () {
 
 });
 
+//
+// $(".percentage").on("ifUnchecked", function () {
+//   alert("cambiando");
+//   console.log('no paso');
+//   $('#nuevoPrecioVenta').prop("readonly", false);
+// })
+//
+// $('.percentage').on('ifChecked', function(event){
+//   console.log("hola mundo");
+//   alert("no funciona");
+// });
 
-$(".percentage").on("ifUnchecked", function () {
-  alert("cambiando");
-  console.log('no paso');
-})
+function checkboxSelected(){
+
+  selected = document.getElementById('percentage').checked;
+  if(!selected) {
+    $('#nuevoPrecioVenta').prop('readonly', false);
+  }else{
+    $('#nuevoPrecioVenta').prop('readonly', true);
+  }
+
+}

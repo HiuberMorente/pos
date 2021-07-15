@@ -47,7 +47,7 @@
 
               $ultimo_login = UsuariosModel ::modelActualizarUsuario($table, $item1, $valor1, $item2, $valor2);
 
-              if($ultimo_login == "ok"){
+              if($ultimo_login === "ok"){
 
                 echo '<script> 
                                 window.location.href = "inicio";
@@ -70,9 +70,7 @@
 
       $tabla = "usuarios";
 
-      $respuesta = UsuariosModel ::modelMostrarUsuario($tabla, $item, $valor);
-
-      return $respuesta;
+      return UsuariosModel ::modelMostrarUsuario($tabla, $item, $valor);
     }
 
     // CREAR USUARIOS
@@ -103,15 +101,17 @@
             // DIRECTORIO FOTO USUARIO
             $directorio = "Views/img/usuarios/" . $_POST["nuevoUsuario"];
 
-            mkdir($directorio, 0755);
+            if(!mkdir($directorio, 0755) && !is_dir($directorio)){
+              throw new RuntimeException(sprintf('Directory "%s" was not created', $directorio));
+            }
 
 
             // VALIDACIONES DE ACUERDO AL TIPO IMAGEN
-            if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+            if($_FILES["nuevaFoto"]["type"] === "image/jpeg"){
 
               // GUARDAR IMAGEN EN DIRECTORIO
 
-              $aleatorio = mt_rand(100, 999);
+              $aleatorio = random_int(100, 999);
 
               $ruta = "Views/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".jpeg";
 
@@ -124,11 +124,11 @@
               imagejpeg($destino, $ruta);
             }
 
-            if($_FILES["nuevaFoto"]["type"] == "image/png"){
+            if($_FILES["nuevaFoto"]["type"] === "image/png"){
 
               // GUARDAR IMAGEN EN DIRECTORIO
 
-              $aleatorio = mt_rand(100, 999);
+              $aleatorio = random_int(100, 999);
 
               $ruta = "Views/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".png";
 
@@ -157,7 +157,7 @@
 
           $respuesta = UsuariosModel ::modelIngresarUsuario($tabla, $datos);
 
-          if($respuesta == "ok"){
+          if($respuesta === "ok"){
             echo '<script>
                         Swal.fire({
                             icon: "success",
@@ -222,7 +222,7 @@
 
 
             // VALIDACIONES DE ACUERDO AL TIPO IMAGEN
-            if($_FILES["editarFoto"]["type"] == "image/jpeg"){
+            if($_FILES["editarFoto"]["type"] === "image/jpeg"){
 
               // GUARDAR IMAGEN EN DIRECTORIO
 
@@ -239,7 +239,7 @@
               imagejpeg($destino, $ruta);
             }
 
-            if($_FILES["editarFoto"]["type"] == "image/png"){
+            if($_FILES["editarFoto"]["type"] === "image/png"){
 
               // GUARDAR IMAGEN EN DIRECTORIO
 
@@ -300,7 +300,7 @@
 
           $respuesta = UsuariosModel ::modelEditarUsuario($tabla, $datos);
 
-          if($respuesta == "ok"){
+          if($respuesta === "ok"){
             echo '<script>
                         Swal.fire({
                             icon: "success",
@@ -342,7 +342,7 @@
         $tabla = "usuarios";
         $datos = $_GET["idUsuario"];
 
-        var_dump($_GET["fotoUsuario"]);
+
         if($_GET["fotoUsuario"] != ""){
           unlink($_GET["fotoUsuario"]);
           rmdir('Views/img/usuarios/' . $_GET["usuario"]);
@@ -350,7 +350,7 @@
 
         $respuesta = UsuariosModel ::modelBorrarUsuario($tabla, $datos);
 
-        if($respuesta == "ok"){
+        if($respuesta === "ok"){
           echo '<script>
                     Swal.fire({
                         icon: "success",

@@ -55,7 +55,6 @@
       if ($statement->execute()) {
         return "ok";
       } else {
-        print_r($statement->errorInfo());
         return "error";
       }
 
@@ -78,7 +77,6 @@
       if ($statement->execute()) {
         return "ok";
       } else {
-        print_r($statement->errorInfo());
         return "error";
       }
 
@@ -109,7 +107,7 @@
     }
 
     // BORRAR USUARIO
-    static public function modelBorrarUsuario($tabla, $datos)
+     public static function modelBorrarUsuario($tabla, $datos)
     {
       $statement = Connection::connect()->prepare("DELETE FROM $tabla WHERE id = :id");
 
