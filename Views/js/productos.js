@@ -1,17 +1,3 @@
-// CARGAR TABLAS DINÁMICAS PRODUCTOS
-// $.ajax({
-//
-//   url: "ajax/ProductsDatatable.ajax.php",
-//   success: function (respuesta) {
-//
-//     console.log("respuesta", respuesta);
-//
-//   }
-//
-// });
-// noinspection JSCheckFunctionSignatures
-
-
 
 
 $('.productTable').DataTable({
@@ -269,17 +255,7 @@ $('.nuevoPorcentaje').change(function () {
 
 });
 
-//
-// $(".percentage").on("ifUnchecked", function () {
-//   alert("cambiando");
-//   console.log('no paso');
-//   $('#nuevoPrecioVenta').prop("readonly", false);
-// })
-//
-// $('.percentage').on('ifChecked', function(event){
-//   console.log("hola mundo");
-//   alert("no funciona");
-// });
+
 
 function checkboxSelected(){
 
@@ -291,3 +267,80 @@ function checkboxSelected(){
   }
 
 }
+
+// SUBIENDO FOTO DEL PRODUCTO
+$(".nuevaImagen").change(function(){
+
+  var imagen = this.files[0];
+
+  // VALIDAR FORMATO DE IMAGEN
+  if (imagen["type"] !== "image/jpeg" && imagen["type"] !== "image/png") {
+
+    $(".nuevaImagen").val("");
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al subir la imagen',
+      text: '¡La imagen debe estar en formato JPG o PNG!',
+      confirmButtonText: "Cerrar"
+    });
+  }else if(imagen["size"] > 2000000){
+    $(".nuevaImagen").val("");
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al subir la imagen',
+      text: '¡La imagen no debe pesar mas de 2MB!',
+      confirmButtonText: "Cerrar"
+    });
+  }else{
+    var datosImagen = new FileReader;
+    datosImagen.readAsDataURL(imagen);
+
+    $(datosImagen).on("load", function(event) {
+
+      var rutaImagen = event.target.result;
+      $(".previsualizar").attr("src", rutaImagen);
+
+    });
+  }
+
+});
+
+
+//Editar Producto
+$(".productTable tbody").on("click", "button.btnEditProducts", function(){
+  let idProducto = $(this).attr("idProduct");
+  let data = new FormData();
+  data.append("idProduct", idProducto);
+
+  $.ajax({
+    url: "ajax/ProductsAjax.ajax.php.",
+    method: "POST",
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (response){
+      let categoryData = new FormData();
+      categoryData.append("idCategoria", response['idCategoria']);
+
+      $.ajax({
+        url: "ajax/CategoriesAjax.ajax.php.",
+        method: "POST",
+        data: categoryData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+          $("#categoryEdit").val(response["id"]);
+          $("#categoryEdit").html(response["categoria"]);
+        }
+      })
+
+    }
+  })
+
+});

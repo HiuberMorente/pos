@@ -7,24 +7,26 @@
 
     // EDITAR USUARIOS
     public $userId;
-
+  
+    /**
+     * @throws JsonException
+     */
     public function ajaxEditarUsuario():void{
 
       $item = "id";
       $valor = $this->userId;
       $respuesta = UsuariosController::controllerMostrarUsuario($item, $valor);
 
-      try{
-        echo json_encode($respuesta, JSON_THROW_ON_ERROR);
-      } catch(JsonException){
-
-      }
+      echo json_encode($respuesta, JSON_THROW_ON_ERROR);
     }
 
     // ACTIVAR USUARIO
     public $activateUser;
     public $activateId;
-
+  
+    /**
+     * @throws JsonException
+     */
     public function ajaxActivarUsuario():void{
 
       $tabla = "usuarios";
@@ -37,31 +39,29 @@
 
 
       $respuesta = UsuariosModel::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
-
-      try{
-        echo json_encode($respuesta, JSON_THROW_ON_ERROR);
-      } catch(JsonException){
-
-      }
+  
+      echo json_encode($respuesta, JSON_THROW_ON_ERROR);
+      
 
     }
 
 
     // VALIDAR SI USUARIOS ESTA REGISTRADO
     public $validateUser;
-
-
+  
+  
+    /**
+     * @throws JsonException
+     */
     public function ajaxValidarUsuario():void{
 
       $item = "usuario";
       $valor = $this->validateUser;
       $respuesta = UsuariosController::controllerMostrarUsuario($item, $valor);
-
-      try{
-        echo json_encode($respuesta, JSON_THROW_ON_ERROR);
-      } catch(JsonException){
-
-      }
+  
+      echo json_encode($respuesta, JSON_THROW_ON_ERROR);
+     
+     
 
     }
 

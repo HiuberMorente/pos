@@ -74,6 +74,10 @@
     }
 
     // CREAR USUARIOS
+
+    /**
+     * @throws Exception
+     */
     static public function controllerCrearUsuario(){
       if(isset($_POST["nuevoUsuario"])){
         if(
@@ -102,7 +106,7 @@
             $directorio = "Views/img/usuarios/" . $_POST["nuevoUsuario"];
 
             if(!mkdir($directorio, 0755) && !is_dir($directorio)){
-              throw new RuntimeException(sprintf('Directory "%s" was not created', $directorio));
+              throw new \RuntimeException(sprintf('Directory "%s" was not created', $directorio));
             }
 
 
@@ -217,7 +221,9 @@
 
             } else{
 
-              mkdir($directorio, 0755);
+              if(!mkdir($directorio, 0755) && !is_dir($directorio)){
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $directorio));
+              }
             }
 
 

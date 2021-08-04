@@ -107,7 +107,7 @@ $(document).on("click", ".btnActivar", function() {
         }
     });
     
-    if(estadoUsuario === 0){
+    if(estadoUsuario == 0){
 
         $(this).removeClass('btn-success');
         $(this).addClass('btn-danger');

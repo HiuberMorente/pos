@@ -10,7 +10,7 @@
 
 
 
-  class ProductsDatatableAjax{
+  class   ProductsDatatableAjax{
 
     // MOSTRAR TABLA PRODUCTOS
     public function showProductsTable():void{

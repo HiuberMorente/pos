@@ -6,7 +6,6 @@
         <div class="col-sm-6">
           <h1>
             Administrar productos
-
           </h1>
         </div>
         <div class="col-sm-6">
@@ -236,6 +235,7 @@ MODAL BODY
                       name="nuevoPrecioCompra"
                       id="nuevoPrecioCompra"
                       min="0"
+                      step="any"
                       placeholder="Precio de compra"
                       aria-label="nuevoPrecioCompra" required>
 
@@ -255,6 +255,7 @@ MODAL BODY
                       name="nuevoPrecioVenta"
                       id="nuevoPrecioVenta"
                       min="0"
+                      step="any"
                       placeholder="Precio de venta"
                       aria-label="nuevoPrecioVenta"
                       required>
@@ -317,11 +318,11 @@ MODAL BODY
                 <div class="panel">
                   SUBIR IMAGEN
                   <br><br>
-                  <input type="file" id="nuevaImagen" name="nuevaImagen">
+                  <input type="file" class="nuevaImagen" name="nuevaImagen">
                   <p class="help-block">Peso máximo de la imagen 2MB</p>
 
                   <img src="/Views/img/productos/default/anonymous.png" alt="imag-subir"
-                       class="img-fluid img-thumbnail" style="width: 100px">
+                       class="img-fluid img-thumbnail previsualizar" style="width: 100px">
                 </div>
               </div>
 
@@ -330,7 +331,8 @@ MODAL BODY
           </div>
         </div>
 
-        <!--==================================
+
+<!--==================================
 MODAL FOOTER
 ==================================-->
         <div class="modal-footer">
@@ -345,6 +347,245 @@ MODAL FOOTER
       <?php
         $createProduct = new ProductosController();
         $createProduct -> controllerCreateProduct();
+      ?>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<!--==================================
+MODAL EDITAR PRODUCTO
+==================================-->
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalEditProduct"
+  tabindex="-1"
+  aria-labelledby="ModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <form action="" role="form" method="post" enctype="multipart/form-data">
+        <!--==================================
+MODAL HEADER
+==================================-->
+        <div class="modal-header bg-secondary">
+
+          <h5 class="modal-title" id="ModalLabel">
+            Editar producto
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+
+        <!--==================================
+MODAL BODY
+==================================-->
+        <div class="modal-body">
+          <div class="box-body">
+
+            <div class="form-group">
+
+
+              <!-- Categoría -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa fa-th"></i>
+                </span>
+                <select
+                  name="editarCategoria"
+                  class="form-select text-gray"
+                  id="editarCategoria"
+                  aria-label="editarCategoria"
+                  readonly
+                  required>
+                  <option id="categoryEdit"></option>
+                </select>
+              </div>
+
+
+              <!-- codigo -->
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa fa-code"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarCodigo"
+                  id="editarCodigo"
+                  aria-label="editarCodigo"
+                  readonly
+                  required
+                >
+              </div>
+
+              <!-- Descripción -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fab fa-product-hunt"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarDescripcion"
+                  id="editarDescripcion"
+                  aria-label="editarDescripcion" required>
+              </div>
+
+
+              <!-- Stock -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa fa-check"></i>
+                </span>
+
+                <input
+                  type="number"
+                  class="form-control input-lg"
+                  name="editarStock"
+                  id="editarStock"
+                  min="0"
+                  aria-label="editarStock" required>
+
+              </div>
+
+              <div class="row">
+
+                <!-- precio de compra -->
+                <div class="col-lg-6">
+                  <div class="input-group mb-3 ">
+                    <span class="input-group-text">
+                      <i class="fa fa-money-bill-wave"></i>
+                    </span>
+
+                    <input
+                      type="number"
+                      class="form-control input-lg"
+                      name="editarPrecioCompra"
+                      id="editarPrecioCompra"
+                      min="0"
+                      step="any"
+                      aria-label="editarPrecioCompra" required>
+
+                  </div>
+                </div>
+
+                <!-- Precio de venta -->
+                <div class="col-lg-6">
+                  <div class="input-group mb-3 ">
+                    <span class="input-group-text">
+                      <i class="fa fa-money-bill-wave"></i>
+                    </span>
+
+                    <input
+                      type="number"
+                      class="form-control input-lg"
+                      name="editarPrecioVenta"
+                      id="editarPrecioVenta"
+                      min="0"
+                      step="any"
+                      aria-label="editarPrecioVenta"
+                      required>
+
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-6">
+
+                      <!-- checkbox -->
+                      <div class="input-group mb-3">
+
+
+                        <label for="percentage">
+                          <input
+                            type="checkbox"
+                            class="icheckbox_minimal-blue percentage"
+                            id="percentage"
+                            onclick="checkboxSelected()"
+                            checked>
+
+                          Utilizar porcentaje
+                        </label>
+
+
+                      </div>
+
+
+                    </div>
+
+                    <!-- Entrada Porcentaje -->
+                    <div class="col-sm-6">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"> <i class="fa fa-percent"></i> </span>
+
+                        <input
+                          type="number"
+                          class="form-control inpug-lg nuevoPorcentaje"
+                          min="0"
+                          value="20"
+                          aria-label="porcentaje"
+                          style="padding: 0 0 0 10px;"
+                          required>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+              </div>
+
+
+              <!-- imagen -->
+              <div class="input-group mb-3">
+                <div class="panel">
+                  SUBIR IMAGEN
+                  <br><br>
+                  <input type="file" class="nuevaImagen" name="editarImagen">
+                  <p class="help-block">Peso máximo de la imagen 2MB</p>
+
+                  <img src="/Views/img/productos/default/anonymous.png" alt="imag-subir"
+                       class="img-fluid img-thumbnail previsualizar" style="width: 100px">
+                  <input type="hidden" name="imagenActual" id="imagenActual">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <!--==================================
+        MODAL FOOTER
+        ==================================-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default d-flex" data-bs-dismiss="modal">Salir</button>
+
+          <button type="submit" class="btn btn-primary ml-auto">Guardar cambios</button>
+
+        </div>
+
+      </form>
+
+      <?php
+//        $editarProducto = new ProductosController();
+//        $editarProducto -> controllerCreateProduct();
       ?>
 
     </div>
