@@ -62,8 +62,8 @@
                         "'. $product["descripcion"].'",
                         "'.$categories["categoria"].'",
                         "'. $stock.'",
-                        "'. $product["precioCompra"].'",
-                        "'. $product["precioVenta"].'",
+                        "Q. '.number_format($product["precioCompra"],2).'",
+                        "Q. '.number_format($product["precioVenta"],2).'",
                         "'. $product["fecha"].'",
                         "'.$buttons.'"
                       ],';

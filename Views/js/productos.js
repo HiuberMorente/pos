@@ -221,7 +221,7 @@ $('#nuevaCategoria').change(function () {
 
 
 // AGREGANDO PRECIO DE VENTA
-$('#nuevoPrecioCompra').change(function () {
+$('#nuevoPrecioCompra, #editarPrecioCompra' ).change(function () {
 
   if($('.percentage').prop('checked')){
 
@@ -231,9 +231,16 @@ $('#nuevoPrecioCompra').change(function () {
     // noinspection JSJQueryEfficiency
     let percentage =  Number($('#nuevoPrecioCompra').val() * porcentageValue/100) + Number($('#nuevoPrecioCompra').val());
 
+    let percentageEdit =  Number($('#editarPrecioCompra').val() * porcentageValue/100) + Number($('#editarPrecioCompra').val());
+
 
     $('#nuevoPrecioVenta').val(percentage);
     $('#nuevoPrecioVenta').prop("readonly", true);
+
+    $('#editarPrecioVenta').val(percentageEdit);
+    $('#editarPrecioVenta').prop("readonly", true);
+
+
   }
 
 });
@@ -243,14 +250,21 @@ $('.nuevoPorcentaje').change(function () {
 
   if($('.percentage').prop('checked')){
 
-    let porcentageValue = $('.nuevoPorcentaje').val();
+    let porcentageValue = $(this).val();
 
 
     let percentage =  Number($('#nuevoPrecioCompra').val() * porcentageValue/100) + Number($('#nuevoPrecioCompra').val());
 
+    let percentageEdit =  Number($('#editarPrecioCompra').val() * porcentageValue/100) + Number($('#editarPrecioCompra').val());
+
+
 
     $('#nuevoPrecioVenta').val(percentage);
     $('#nuevoPrecioVenta').prop("readonly", true);
+
+    $('#editarPrecioVenta').val(percentageEdit);
+    $('#editarPrecioVenta').prop("readonly", true);
+
   }
 
 });
@@ -259,14 +273,27 @@ $('.nuevoPorcentaje').change(function () {
 
 function checkboxSelected(){
 
-  selected = document.getElementById('percentage').checked;
-  if(!selected) {
-    $('#nuevoPrecioVenta').prop('readonly', false);
-  }else{
+  let selected = document.getElementById('percentage').checked;
+  if(selected) {
     $('#nuevoPrecioVenta').prop('readonly', true);
+    // $('#editarPrecioVenta').prop('readonly', true);
+  }else{
+    $('#nuevoPrecioVenta').prop('readonly', false);
+    // $('#editarPrecioVenta').prop('readonly', false);
   }
-
 }
+
+function checkboxSelectedEdit(){
+
+  let selected = document.getElementById('percentageEdit').checked;
+  if(!selected) {
+    $('#editarPrecioVenta').prop('readonly', false);
+  }else{
+    $('#editarPrecioVenta').prop('readonly', true);
+  }
+}
+
+
 
 // SUBIENDO FOTO DEL PRODUCTO
 $(".nuevaImagen").change(function(){
@@ -338,9 +365,41 @@ $(".productTable tbody").on("click", "button.btnEditProducts", function(){
           $("#categoryEdit").val(response["id"]);
           $("#categoryEdit").html(response["categoria"]);
         }
-      })
+      });
+
+      $("#editarCodigo").val(response['codigo']);
+      $("#editarDescripcion").val(response['descripcion']);
+      $("#editarStock").val(response['stock']);
+      $("#editarPrecioCompra").val(response['precioCompra']);
+      $("#editarPrecioVenta").val(response['precioVenta']);
+
+      if(response['imagen'] != ""){
+        $("#imagenActual").val(response['imagen']);
+        $(".previsualizar").attr("src", response["imagen"]);
+      }
 
     }
-  })
+  });
+});
 
+//eliminar producto
+$(".productTable tbody").on("click", "button.btnDeleteProduct", function(){
+  let idProduct = $(this).attr("idProduct");
+  let productCode = $(this).attr("codigo");
+  let image = $(this).attr("image");
+
+  Swal.fire({
+    icon: "warning",
+    title: "¿Está seguro de borrar el producto?",
+    text: "¡Si no lo está puede cancelar la acción!",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, eliminar producto!",
+  }).then((result) => {
+    if(result.value){
+      window.location = "index.php?ruta=productos&idProducto="+idProduct+"&imagen="+image+"&codigo="+productCode;
+    }
+  });
 });

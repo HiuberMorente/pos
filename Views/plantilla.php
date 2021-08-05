@@ -134,6 +134,10 @@
 <!--icheck-->
 <script src="/Views/plugins/icheck-1.0.3/icheck.js"></script>
 
+<!-- InputMask -->
+<script src="/Views/plugins/moment/moment.min.js"></script>
+<script src="/Views/plugins/inputmask/jquery.inputmask.min.js"></script>
+
 <!-- plantilla -->
 <script src="/Views/js/plantilla.js"></script>
 

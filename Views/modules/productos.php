@@ -496,6 +496,7 @@ MODAL BODY
                       min="0"
                       step="any"
                       aria-label="editarPrecioVenta"
+                      readonly
                       required>
 
                   </div>
@@ -508,14 +509,13 @@ MODAL BODY
                       <div class="input-group mb-3">
 
 
-                        <label for="percentage">
+                        <label for="percentageEdit">
                           <input
-                            type="checkbox"
-                            class="icheckbox_minimal-blue percentage"
-                            id="percentage"
-                            onclick="checkboxSelected()"
-                            checked>
-
+                              type="checkbox"
+                              class="icheckbox_minimal-blue percentage"
+                              id="percentageEdit"
+                              onclick="checkboxSelectedEdit()"
+                              checked>
                           Utilizar porcentaje
                         </label>
 
@@ -584,8 +584,8 @@ MODAL BODY
       </form>
 
       <?php
-//        $editarProducto = new ProductosController();
-//        $editarProducto -> controllerCreateProduct();
+        $editarProducto = new ProductosController();
+        $editarProducto -> editProductController() ;
       ?>
 
     </div>
@@ -593,3 +593,7 @@ MODAL BODY
 
 </div>
 
+<?php
+  $deleteProduct = new ProductosController();
+  $deleteProduct -> deleteProductController();
+?>
