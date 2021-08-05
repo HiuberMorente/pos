@@ -81,7 +81,8 @@
                                   <i class="fa fa-pen text-white"></i>
                               </button>
                               <button type=""
-                              class="btn btn-danger">
+                              class="btn btn-danger btnEliminarCliente"
+                              idClient="'.$client["id"].'">
                                 <i class="fa fa-times"></i>
                                 </button>
                             </div>
@@ -297,6 +298,7 @@ MODAL EDITAR
                        name="editarClienteNombre"
                        id="editarClienteNombre"
                        required>
+                <input type="hidden" id="idClient" name="idClient">
               </div>
 
               <!-- apellido -->
@@ -371,10 +373,10 @@ MODAL EDITAR
                 </span>
                 <input type="text"
                        class="form-control input-lg"
-                       name="editarUltimaCompra"
-                       id="editarUltimaCompra"
+                       name="editarFechaRegistro"
+                       id="editarFechaRegistro"
                        data-inputmask-alias="datetime"
-                       data-inputmask-inputformat="dd/mm/yyyy"
+                       data-inputmask-inputformat="yyyy/mm/dd"
                        data-mask
                        required>
               </div>
@@ -400,11 +402,16 @@ MODAL EDITAR
       </form>
       
       <?php
-//      $createClient = new ClientesController();
-//      $createClient -> createClientController();
+      $editClient = new ClientesController();
+      $editClient -> editClientController();
       ?>
 
     </div>
   </div>
 
 </div>
+
+ <?php
+  $deleteClient = new ClientesController();
+  $deleteClient -> deleteClientController();
+ ?>

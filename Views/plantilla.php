@@ -144,6 +144,7 @@
 <script src="/Views/js/usuarios.js"></script>
 <script src="/Views/js/categorias.js"></script>
 <script src="/Views/js/productos.js"></script>
+<script src="/Views/js/clientes.js"></script>
 
 
 </body>
