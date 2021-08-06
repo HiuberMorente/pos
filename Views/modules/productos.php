@@ -290,7 +290,8 @@ MODAL BODY
                     <!-- Entrada Porcentaje -->
                     <div class="col-sm-6">
                       <div class="input-group mb-3">
-                        <span class="input-group-text"> <i class="fa fa-percent"></i> </span>
+                        <span class="input-group-text">
+                          <i class="fa fa-percent"></i> </span>
 
                         <input
                           type="number"
