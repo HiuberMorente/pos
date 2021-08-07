@@ -58,15 +58,20 @@
                   <td>1</td>
                   <td>0001</td>
                   <td>Hiuber Morente</td>
+                  <td>Ronaldo Morente</td>
                   <td>Efectivo</td>
                   <td>Q. 500</td>
                   <td>Q. 590</td>
-                  <td>1000</td>
                   <td>12/12/2021</td>
                   <td>
                     <div class="btn-group">
-                      <button type="" class="btn btn-info"><i class="fa fa-print text-white"></i></button>
-                      <button type="" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                      <button type=""
+                              class="btn btn-info">
+                        <i class="fa fa-print text-white"></i>
+                      </button>
+                      <button type=""
+                              class="btn btn-danger">
+                        <i class="fa fa-times"></i></button>
                     </div>
                   </td>
                 </tr>

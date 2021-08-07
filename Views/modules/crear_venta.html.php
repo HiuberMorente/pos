@@ -29,7 +29,7 @@
       <div class="col-lg-5 col-12">
         <div class="card card-success card-outline">
           <div class="card-header with-border">
-            <form role="form" method="post" class="formularioVenta">
+            <form action="" role="form" method="post">
               <div class="card-body">
                   <div class="card">
                   
@@ -45,9 +45,6 @@
                                name="nuevoVendedor"
                                value="<?php echo $_SESSION["nombre"] ." ". $_SESSION["apellido"];?>"
                                readonly>
-                        <input type="hidden"
-                               name="idVendedor"
-                               value="<?php echo $_SESSION["id"];?>">
                       </div>
                     </div>
                     
@@ -57,62 +54,27 @@
                         <span class="input-group-text">
                           <i class="fa fa-key"></i>
                         </span>
-                        <?php
-                        
-                          $item = null;
-                          $value = null;
-                          $sales = VentasController::showSalesController($item, $value);
-                          if(!$sales){
-                            echo '<input type="text"
-                                         class="form-control"
-                                         id="nuevaVenta"
-                                         name="nuevaVenta"
-                                         value="0001"
-                                         readonly>';
-                          }else{
-                            foreach($sales as $key => $value){
-                            
-                            }
-                            $codigo = $value["codigo"] + 1;
-                            echo '<input type="text"
-                                         class="form-control"
-                                         id="nuevaVenta"
-                                         name="nuevaVenta"
-                                         value="'.$codigo.'"
-                                         readonly>';
-                          }
-                        ?>
-                        
+                        <input type="text"
+                               class="form-control"
+                               id="nuevaVenta"
+                               name="nuevaVenta"
+                               value="0001"
+                               readonly>
                       </div>
                     </div>
                     
-                  
-
-<!--                    cliente2-->
+                    <!--cliente-->
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-text">
                           <i class="fa fa-users"></i>
                         </span>
-                        <div class="form-control" style="padding: 4px 0 2px 0px">
-                          <select class="select col-sm-12" style="width: 100%"
-                                  id="selectClient"
-                                  name="selectClient"
-                                  required>
-                            <option value="">Seleccionar cliente</option>
-    
-                            <?php
-                            $item = null;
-                            $value = null;
-    
-                            $clients = ClientesController::showClientsController($item, $value);
-                            foreach($clients as $key => $client){
-                              echo '<option value="'.$client["id"].'">'.$client["nombre"]. " " .$client["apellido"].'</option>';
-                            }
-                            ?>
-                          </select>
-                        </div>
-                        
+                        <select class="form-select"
+                                id="selectClient"
+                                name="selectClient"
+                                required>
+                          <option value="">Seleccionar cliente</option>
+                        </select>
                         <span class="input-group-text">
                           <button type="button"
                                   class="btn btn-secondary btn-xs"
@@ -124,10 +86,57 @@
                       </div>
                     </div>
                     
-                    <div class="form-group row newProduct"></div>
+                    <div class="form-group row newProduct">
+                    
+  <!--                    descripcion del producto-->
+                      <div class="col-sm-6">
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <button type="button" class="btn btn-danger btn-xs">
+                              <i class="fa fa-times"></i>
+                            </button>
+                          </span>
+                          <input type="text"
+                                 class="form-control"
+                                 id="agregarProducto"
+                                 name="agregarProducto"
+                                 placeholder="Descripción del producto"
+                                 required>
+                        </div>
+                      </div>
+                      
+  <!--                    cantidad del producto-->
+                      <div class="col-sm-3">
+                        <input type="number"
+                               class="form-control"
+                               id="nuevaCantidadProducto"
+                               name="nuevaCantidadProducto"
+                               min="1"
+                               placeholder="0"
+                               required>
+                      </div>
+                      
+  <!--                    precio del producto-->
+                      <div class="col-sm-3">
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="fab fa-quora"></i>
+                          </span>
+                          <input type="number"
+                                 class="form-control"
+                                 id="nuevaPrecioProducto"
+                                 name="nuevaPrecioProducto"
+                                 min="1"
+                                 placeholder="0000"
+                                 required>
+                          
+                        </div>
+                      </div>
+                      
+                    </div>
                     
                     <button type="button"
-                            class="btn btn-secondary d-lg-none .d-xl-block btnAgregarProducto">
+                            class="btn btn-secondary d-lg-none .d-xl-block">
                       Agregar Producto
                     </button>
   
@@ -232,17 +241,17 @@
         </div>
         
       </div>
-<!--      d-md-none d-lg-block d-sm-none d-md-block d-none d-sm-block-->
+      
         <!-- table productos-->
-        <div class="col-lg-7 d-none d-sm-none d-md-block">
+        <div class="col-lg-7 d-md-none d-lg-block d-sm-none d-md-block d-none d-sm-block">
         <div class="card card-warning card-outline">
           <div class="card-header with-border">
             <div class="card-body">
               
               <div class="row">
                 <div class="col-lg-12">
-                  <table class="table table-bordered table-striped display nowrap tableSales"
-                        style="width: 100%">
+                  <table class="table table-bordered table-striped nowrap"
+                         id="tabla" style="width: 100%">
                     <thead>
                     <tr>
                       <th style="width: 10px%" class="text-center">#</th>
@@ -253,7 +262,28 @@
                       <th class="text-center">Acciones</th>
                     </tr>
                     </thead>
-                    
+                    <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">
+                        <img src="Views/img/productos/default/anonymous.png"
+                             alt="productImage"
+                             class="img-thumbnail"
+                             style="width: 40px">
+                      </td>
+                      <td class="text-center">00123</td>
+                      <td class="text-center">Lorem ipsum dolor sit amet</td>
+                      <td class="text-center">20</td>
+                      <td class="text-center">
+                        <div class="btn-group">
+                          <button type="button"
+                                  class="btn btn-primary">
+                            Agregar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

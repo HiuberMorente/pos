@@ -182,7 +182,8 @@ $('.productTable').DataTable({
     },
     "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas"
   }
-});
+}).columns.adjust()
+   .responsive.recalc();
 
 
 // CAPTURANDO CATEGORIA PARA ASIGNAR CODIGO

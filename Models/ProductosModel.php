@@ -17,13 +17,16 @@
 
         return $statement->fetch();
 
+      }else{
+        $statement = Connection::connect()->query("SELECT * FROM $tabla");
+  
+        $statement->execute();
+  
+        return $statement->fetchAll();
       }
-
-      $statement = Connection::connect()->query("SELECT * FROM $tabla");
-
-      $statement->execute();
-
-      return $statement->fetchAll();
+      
+      $statement -> close();
+      $statement = null;
 
     }
 

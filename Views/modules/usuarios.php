@@ -41,7 +41,7 @@
             <table id="tabla"
                    class="table table-bordered table-striped display nowrap"
                    cellspacing="0"
-                   width="100%">
+                   style="width: 100%;">
               <thead>
               <tr>
 

@@ -31,10 +31,13 @@
 
       </div>
       <div class="card-body">
+        
         <div class="row">
           <div class="col-lg-12">
-
-            <table id="tabla" class="table table-bordered table-striped display nowrap" style="width: 100%">
+            <table id="tabla"
+                   class="table table-bordered table-striped display nowrap"
+                   cellspacing="0";
+                   style="width: 100%">
               <thead>
                 <tr>
 

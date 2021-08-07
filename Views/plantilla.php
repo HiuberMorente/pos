@@ -40,7 +40,9 @@
   <!-- iCheck for checkboxes and radio inputs -->
 <!--  <link rel="stylesheet" href="/Views/plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
   <link href="/Views/plugins/icheck-1.0.3/skins/all.css" rel="stylesheet">
-
+  
+<!--  select2-->
+  <link href="/Views/plugins/select2/css/select2.min.css" rel="stylesheet">
 
 </head>
 
@@ -138,6 +140,9 @@
 <script src="/Views/plugins/moment/moment.min.js"></script>
 <script src="/Views/plugins/inputmask/jquery.inputmask.min.js"></script>
 
+<!--select-->
+<script src="/Views/plugins/select2/js/select2.full.js"></script>
+
 <!-- plantilla -->
 <script src="/Views/js/plantilla.js"></script>
 
@@ -145,6 +150,7 @@
 <script src="/Views/js/categorias.js"></script>
 <script src="/Views/js/productos.js"></script>
 <script src="/Views/js/clientes.js"></script>
+<script src="/Views/js/ventas.js"></script>
 
 
 </body>
