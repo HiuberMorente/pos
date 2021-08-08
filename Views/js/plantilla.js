@@ -199,7 +199,7 @@ $('[data-mask]').inputmask()
 
 //select
 $(document).ready(function() {
-    $('.select').select2({
+    $('.selectData').select2({
         height:'100%'
     });
 });

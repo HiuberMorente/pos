@@ -139,7 +139,7 @@ class ProductosController
       
         $ruta = $_POST["imagenActual"];
         // VALIDAR IMAGEN
-        if(isset($_FILES["editarImagen"]["tmp_name"]) && !empty($_FILES(["editarImagen"]["tmp_name"]))){
+        if(isset($_FILES["editarImagen"]["tmp_name"]) && !empty($_FILES["editarImagen"]["tmp_name"])){
           
           list($ancho, $alto) = getimagesize($_FILES["editarImagen"]["tmp_name"]);
         
@@ -150,7 +150,7 @@ class ProductosController
           // DIRECTORIO FOTO USUARIO
           $directorio = "Views/img/productos/" . $_POST["editarCodigo"];
           
-          if(!empty($_POST["imagenAcutal"]) && $_POST["imagenActual"] !== "Views/img/products/default/anonymous.png"){
+          if(!empty($_POST["imagenAcutal"]) && $_POST["imagenActual"] != "Views/img/products/default/anonymous.png"){
             unlink($_POST["imagenActual"]);
           }else{
             if(!mkdir($directorio, 0755) && !is_dir($directorio)){
@@ -180,7 +180,7 @@ class ProductosController
             imagejpeg($destino, $ruta);
           }
         
-          if($_FILES["editarImagen"]["type"] === "image/png"){
+          if($_FILES["editarImagen"]["type"] == "image/png"){
           
             // GUARDAR IMAGEN EN DIRECTORIO
           
@@ -213,7 +213,7 @@ class ProductosController
       
         $response = ProductosModel::editProductModel($table, $data);
       
-        if($response === "ok"){
+        if($response == "ok"){
           echo '<script>
                         Swal.fire({
                             icon: "success",

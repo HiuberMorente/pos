@@ -86,6 +86,7 @@
                       </div>
                     </div>
                     
+                    
                   
 
 <!--                    cliente2-->
@@ -95,7 +96,7 @@
                           <i class="fa fa-users"></i>
                         </span>
                         <div class="form-control" style="padding: 4px 0 2px 0px">
-                          <select class="select col-sm-12" style="width: 100%"
+                          <select class="selectData col-sm-12" style="width: 100%"
                                   id="selectClient"
                                   name="selectClient"
                                   required>
@@ -127,7 +128,8 @@
                     <div class="form-group row newProduct"></div>
                     
                     <button type="button"
-                            class="btn btn-secondary d-lg-none .d-xl-block btnAgregarProducto">
+                            class="btn btn-secondary d-block d-sm-block d-md-none d-md-block d-lg-none d-xl-none
+                            btnAgregarProducto">
                       Agregar Producto
                     </button>
   
@@ -227,6 +229,8 @@
                 </div>
               </div>
               <br>
+              
+              
             </form>
           </div>
         </div>
@@ -234,7 +238,7 @@
       </div>
 <!--      d-md-none d-lg-block d-sm-none d-md-block d-none d-sm-block-->
         <!-- table productos-->
-        <div class="col-lg-7 d-none d-sm-none d-md-block">
+        <div class="col-lg-7 d-none d-sm-none d-xl-block d-lg-block">
         <div class="card card-warning card-outline">
           <div class="card-header with-border">
             <div class="card-body">
