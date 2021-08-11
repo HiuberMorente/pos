@@ -36,8 +36,9 @@
 
         <ul class="dropdown-menu">
           <li class="user-body dropdown-item">
-            <div class="">
-              <a href="salir" class="btn btn-light">Salir</a>
+            <div>
+              <a href="salir"
+                 class="btn btn-secondary col-sm-12">Salir</a>
             </div>
           </li>
 

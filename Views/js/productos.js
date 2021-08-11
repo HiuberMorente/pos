@@ -238,9 +238,12 @@ $('#nuevoPrecioCompra, #editarPrecioCompra' ).change(function () {
     $('#nuevoPrecioVenta').val(percentage);
     $('#nuevoPrecioVenta').prop("readonly", true);
 
+    console.log(precioImpuesto);
+
     $('#editarPrecioVenta').val(percentageEdit);
     $('#editarPrecioVenta').prop("readonly", true);
 
+    console.log(percentageEdit);
 
   }
 
@@ -259,7 +262,6 @@ $('.nuevoPorcentaje').change(function () {
     let percentageEdit =  Number($('#editarPrecioCompra').val() * porcentageValue/100) + Number($('#editarPrecioCompra').val());
 
 
-
     $('#nuevoPrecioVenta').val(percentage);
     $('#nuevoPrecioVenta').prop("readonly", true);
 
@@ -269,7 +271,6 @@ $('.nuevoPorcentaje').change(function () {
   }
 
 });
-
 
 
 function checkboxSelected(){

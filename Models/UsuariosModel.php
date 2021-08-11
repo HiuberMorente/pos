@@ -61,10 +61,12 @@
       $statement->closeCursor();
       $statement = null;
     }
+    
 
     // EDITAR USUARIOS
     static public function modelEditarUsuario($tabla, $datos)
     {
+      
       $statement = Connection::connect()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido,`password` = :password, perfil =:perfil, foto = :foto WHERE usuario = :usuario");
 
       $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
@@ -75,9 +77,13 @@
       $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
 
       if ($statement->execute()) {
+        
         return "ok";
+        
       } else {
+        
         return "error";
+        
       }
 
       $statement->closeCursor();

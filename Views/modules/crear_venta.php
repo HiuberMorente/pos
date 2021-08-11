@@ -47,6 +47,7 @@
                                readonly>
                         <input type="hidden"
                                name="idVendedor"
+                               id="idVendedor"
                                value="<?php echo $_SESSION["id"];?>">
                       </div>
                     </div>
@@ -96,7 +97,7 @@
                           <i class="fa fa-users"></i>
                         </span>
                         <div class="form-control" style="padding: 4px 0 2px 0px">
-                          <select class="selectData col-sm-12" style="width: 100%"
+                          <select class="selectData col-sm-12"
                                   id="selectClient"
                                   name="selectClient"
                                   required>
@@ -108,11 +109,13 @@
     
                             $clients = ClientesController::showClientsController($item, $value);
                             foreach($clients as $key => $client){
-                              echo '<option value="'.$client["id"].'">'.$client["nombre"]. " " .$client["apellido"].'</option>';
+                              echo '<option value="'.$client["id"].'">' .$client["nombre"]. " " .$client["apellido"].
+                                  ". NIT: ".$client["nit"].'</option>';
                             }
                             ?>
                           </select>
                         </div>
+                      
                         
                         <span class="input-group-text">
                           <button type="button"
@@ -126,6 +129,10 @@
                     </div>
                     
                     <div class="form-group row newProduct"></div>
+
+                    <input type="hidden"
+                           name="listaProductos"
+                           id="listaProductos">
                     
                     <button type="button"
                             class="btn btn-secondary d-block d-sm-block d-md-none d-md-block d-lg-none d-xl-none
@@ -136,44 +143,57 @@
                     <hr>
   <!--                  impuesto y total-->
                     <div class="row">
-                      <div class="col-sm-8 ml-auto">
+                      <div class="col-sm-5 ml-auto">
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Impuesto</th>
-                              <th>Total</th>
+                              <th>Total con Impuestos (12% IVA)</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
   <!--                            impuesto-->
-                              <td style="width: 50%">
+<!--                              <td>-->
                                 <div class="input-group">
-                                  <input type="number"
-                                         class="form-control"
-                                         id="nuevoImpuestoVenta"
-                                         name="nuevoImpuestoVenta"
-                                         min="0"
-                                         placeholder="0"
-                                         required>
-                                  <span class="input-group-text">
-                                    <i class="fa fa-percent"></i>
-                                  </span>
+                                
+                                
                                 </div>
-                              </td>
+<!--                              </td>-->
   <!--                            total-->
-                              <td style="width: 50%">
-                                <div class="input-group">
+                              <td>
+                                <input type="hidden"
+                                       class="form-control"
+                                       id="nuevoImpuestoVenta"
+                                       name="nuevoImpuestoVenta"
+                                       value="12"
+                                       required>
+                                       
+                                <input type="hidden"
+                                       name="nuevoPrecioImpuesto"
+                                       id="nuevoPrecioImpuesto" required>
+                                
+                                <input type="hidden"
+                                       name="nuevoPrecioNeto"
+                                       id="nuevoPrecioNeto" required>
+                                
+                                <div class="input-group input-group-lg">
                                   <span class="input-group-text">
                                     <i class="fab fa-quora"></i>
                                   </span>
-                                  <input type="number"
+                                  <input type="text"
                                          class="form-control"
                                          id="nuevoTotalVenta"
                                          name="nuevoTotalVenta"
+                                         total=""
                                          min="0"
                                          placeholder="0000"
+                                         readonly
                                          required>
+
+                                  <input type="hidden"
+                                         name="totalVenta"
+                                         id="totalVenta">
+                                  
                                 </div>
                               </td>
                             </tr>
@@ -186,36 +206,28 @@
   <!--                    metodo de pago-->
                     
                     <div class="form-group row">
-                      <div class="col-sm-5">
+                      <div class="col-sm-4">
                           <select class="form-select"
                                   id="nuevoMetodoPago"
                                   name="nuevoMetodoPago"
                                   required>
-                            <option value="">Seleccione Método de pago</option>
-                            <option value="efectivo">Efectivo</option>
-                            <option value="tarjetaCredito">
-                              Tarjeta Crédito
-                            </option>
-                            <option value="tarjetaDebito">Tarjeta Débito</option>
+                            <option value="">Método de pago</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="TC">Tarjeta Crédito</option>
+                            <option value="TD">Tarjeta Débito</option>
                           </select>
                        
                       </div>
                       
-                      <div class="col-sm-7">
-                        <div class="input-group">
-                          <span class="input-group-text">
-                            <i class="fa fa-lock"></i>
-                          </span>
-                          <input type="text"
-                                 class="form-control"
-                                 id="nuevoCodigoTransaccion"
-                                 name="nuevoCodigoTransaccion"
-                                 placeholder="Código transacción"
-                                 required>
-                        </div>
-                      </div>
+       
                       
+                      <div class="cajasMetodoPago col-sm-8 row"></div>
+
+                      <input type="hidden"
+                             name="listaMetodoPago"
+                             id="listaMetodoPago">
                     </div>
+                    
                     
                   </div>
                 <br>
@@ -232,6 +244,15 @@
               
               
             </form>
+            
+            <?php
+            
+              $guardarVenta = new VentasController();
+              $guardarVenta -> createSaleController();
+            
+            ?>
+            
+            
           </div>
         </div>
         

@@ -20,7 +20,7 @@ $(".btnEditClient").click(function(){
            $("#idClient").val(response["id"]);
            $("#editarClienteNombre").val(response["nombre"]);
            $("#editarClienteApellido").val(response["apellido"]);
-           $("#editarDPI").val(response["dpi"]);
+           $("#editarNIT").val(response["nit"]);
            $("#editarEmail").val(response["email"]);
            $("#editarTelefono").val(response["telefono"]);
            $("#editarDireccion").val(response["direccion"]);

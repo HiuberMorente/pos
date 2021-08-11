@@ -4,11 +4,11 @@
   class ClientesModel{
     
     public static function createClientModel($table, $data){
-      $statement = Connection::connect()->prepare("INSERT INTO $table(nombre, apellido, dpi, email, telefono, direccion) VALUES(:nombre, :apellido, :dpi, :email, :telefono, :direccion)");
+      $statement = Connection::connect()->prepare("INSERT INTO $table(nombre, apellido, nit, email, telefono, direccion) VALUES(:nombre, :apellido, :nit, :email, :telefono, :direccion)");
       
       $statement->bindParam(":nombre", $data["nombre"], PDO::PARAM_STR);
       $statement->bindParam(":apellido", $data["apellido"], PDO::PARAM_STR);
-      $statement->bindParam(":dpi", $data["dpi"], PDO::PARAM_STR);
+      $statement->bindParam(":nit", $data["nit"], PDO::PARAM_STR);
       $statement->bindParam(":email", $data["email"], PDO::PARAM_STR);
       $statement->bindParam(":telefono", $data["telefono"], PDO::PARAM_STR);
       $statement->bindParam(":direccion", $data["direccion"], PDO::PARAM_STR);
@@ -57,12 +57,12 @@
     }
   
     public static function editClientModel( $table, array $data){
-      $statement = Connection::connect()->prepare("UPDATE $table SET nombre = :nombre, apellido = :apellido, dpi = :dpi, email = :email, telefono = :telefono, direccion = :direccion, fechaRegistro = :fechaRegistro WHERE id = :id");
+      $statement = Connection::connect()->prepare("UPDATE $table SET nombre = :nombre, apellido = :apellido, nit = :nit, email = :email, telefono = :telefono, direccion = :direccion, fechaRegistro = :fechaRegistro WHERE id = :id");
   
       $statement->bindParam(":id", $data["id"], PDO::PARAM_INT);
       $statement->bindParam(":nombre", $data["nombre"], PDO::PARAM_STR);
       $statement->bindParam(":apellido", $data["apellido"], PDO::PARAM_STR);
-      $statement->bindParam(":dpi", $data["dpi"], PDO::PARAM_STR);
+      $statement->bindParam(":nit", $data["nit"], PDO::PARAM_STR);
       $statement->bindParam(":email", $data["email"], PDO::PARAM_STR);
       $statement->bindParam(":telefono", $data["telefono"], PDO::PARAM_STR);
       $statement->bindParam(":direccion", $data["direccion"], PDO::PARAM_STR);
@@ -93,6 +93,30 @@
       }
   
       $statement->closeCursor();
+      $statement = null;
+    
+    }
+  
+  
+    static public function updateClientModel($tabla, $item1, $valor1, $id)
+    {
+    
+      $statement = Connection::connect()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id = :id");
+    
+      $statement->bindParam(':' . $item1, $valor1, PDO::PARAM_STR);
+    
+      $statement->bindParam(':id' ,$id, PDO::PARAM_INT);
+    
+      if ($statement->execute()) {
+      
+        return "ok";
+      
+      }else{
+        return "error";
+      }
+    
+    
+      $statement->close();
       $statement = null;
     
     }

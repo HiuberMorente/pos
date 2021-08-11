@@ -3,6 +3,7 @@
 require_once "Connection.php";
 
   class VentasModel{
+    
     public static function showSalesModel($table, $item, $value){
       if ($item != null) {
     
@@ -32,4 +33,38 @@ require_once "Connection.php";
     
       }
     }
+    
+    
+    //guardar venta
+    public static function createSaleModel($tabla, $datos){
+  
+      $statement = Connection::connect()->prepare("INSERT INTO $tabla(codigo, idCliente, idVendedor, productos, impuesto, neto, total, metodoPago) VALUES(:codigo, :idCliente, :idVendedor, :productos, :impuesto, :neto, :total, :metodoPago)");
+  
+      $statement->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
+      $statement->bindParam(":idCliente", $datos["idCliente"], PDO::PARAM_INT);
+      $statement->bindParam(":idVendedor", $datos["idVendedor"], PDO::PARAM_INT);
+      $statement->bindParam(":productos", $datos["productos"], PDO::PARAM_STR);
+      $statement->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
+      $statement->bindParam(":neto", $datos["neto"], PDO::PARAM_STR);
+      $statement->bindParam(":total", $datos["total"], PDO::PARAM_STR);
+      $statement->bindParam(":metodoPago", $datos["metodoPago"], PDO::PARAM_STR);
+      
+      if($statement -> execute()){
+        
+        return "ok";
+        
+      }else{
+        
+        return "error";
+        
+      }
+  
+  
+      $statement->close();
+      $statement = null;
+    }
+    
+    
+    
+    
   }

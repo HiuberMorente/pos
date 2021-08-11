@@ -143,6 +143,9 @@
 <!--select-->
 <script src="/Views/plugins/select2/js/select2.full.js"></script>
 
+<!--JQuerynumber-->
+<script src="/Views/plugins/jqueryNumber/jquery.number.js"></script>
+
 <!-- plantilla -->
 <script src="/Views/js/plantilla.js"></script>
 

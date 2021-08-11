@@ -42,7 +42,6 @@
       $statement->bindParam(":stock", $data["stock"], PDO::PARAM_STR);
       $statement->bindParam(":precioCompra", $data["precioCompra"], PDO::PARAM_STR);
       $statement->bindParam(":precioVenta", $data["precioVenta"], PDO::PARAM_STR);
-
       if($statement -> execute()){
         return "ok";
       }else{
@@ -98,5 +97,31 @@
       $statement -> close();
       $statement = null;
     }
+  
+  
+    // ACTUALIZAR PRODUCTO
+    static public function updateProductModel($tabla, $venta, $valorVenta, $id)
+    {
+    
+      $statement = Connection::connect()->prepare("UPDATE $tabla SET $venta = :$venta WHERE id = :id");
+    
+      $statement->bindParam(':' . $venta, $valorVenta, PDO::PARAM_STR);
+    
+      $statement->bindParam(':id' ,$id, PDO::PARAM_INT);
+    
+      if ($statement->execute()) {
+      
+        return "ok";
+      
+      }else{
+        return "error";
+      }
+      
+      
+      $statement->close();
+      $statement = null;
+    
+    }
+    
 
   }

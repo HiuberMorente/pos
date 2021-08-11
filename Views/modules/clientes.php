@@ -44,7 +44,7 @@
                   <th style="width: 10px" >#</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
-                  <th>DPI</th>
+                  <th>NIT</th>
                   <th>Email</th>
                   <th>Teléfono</th>
                   <th>Dirección</th>
@@ -67,7 +67,7 @@
                           <td>'.($key + 1).'</td>
                           <td>'.$client["nombre"].'</td>
                           <td>'.$client["apellido"].'</td>
-                          <td>'.$client["dpi"].'</td>
+                          <td>'.$client["nit"].'</td>
                           <td>'.$client["email"].'</td>
                           <td>'.$client["telefono"].'</td>
                           <td>'.$client["direccion"].'</td>
@@ -171,8 +171,8 @@ MODAL
                 <input type="number"
                        min="0"
                        class="form-control input-lg"
-                       name="nuevoDPI"
-                       placeholder="Ingresar DPI"
+                       name="nuevoNIT"
+                       placeholder="Ingresar NIT"
                        required>
               </div>
               
@@ -324,8 +324,8 @@ MODAL EDITAR
                 <input type="number"
                        min="0"
                        class="form-control input-lg"
-                       name="editarDPI"
-                       id="editarDPI"
+                       name="editarNIT"
+                       id="editarNIT"
                        required>
               </div>
 

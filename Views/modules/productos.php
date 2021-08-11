@@ -263,6 +263,8 @@ MODAL BODY
                       aria-label="nuevoPrecioVenta"
                       required>
 
+                    
+
                   </div>
 
 
@@ -502,7 +504,8 @@ MODAL BODY
                       aria-label="editarPrecioVenta"
                       readonly
                       required>
-
+                    
+                    
                   </div>
 
 
