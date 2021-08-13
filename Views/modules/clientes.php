@@ -72,7 +72,7 @@
                           <td>'.$client["telefono"].'</td>
                           <td>'.$client["direccion"].'</td>
                           <td>'.$client["compras"].'</td>
-                          <td>0000</td>
+                          <td>'.$client["fechaUltimaCompra"].'</td>
                           <td>'.$client["fechaRegistro"].'</td>
                           <td>
                             <div class="btn-group">

@@ -54,27 +54,59 @@
 
               <tbody>
               
-                <tr>
-                  <td>1</td>
-                  <td>0001</td>
-                  <td>Hiuber Morente</td>
-                  <td>Ronaldo Morente</td>
-                  <td>Efectivo</td>
-                  <td>Q. 500</td>
-                  <td>Q. 590</td>
-                  <td>12/12/2021</td>
-                  <td>
-                    <div class="btn-group">
-                      <button type=""
-                              class="btn btn-info">
-                        <i class="fa fa-print text-white"></i>
-                      </button>
-                      <button type=""
-                              class="btn btn-danger">
-                        <i class="fa fa-times"></i></button>
-                    </div>
-                  </td>
-                </tr>
+              <?php
+                $item = null;
+                $valor = null;
+                
+                $response = VentasController::showSalesController($item, $valor);
+                
+                foreach($response as $key => $value){
+                
+                  echo '<tr>
+                          <td>'.($key + 1).'</td>
+                          <td>'.$value['codigo'].'</td>';
+                  
+                  $itemClient = 'id';
+                  $valorClient = $value['idCliente'];
+                  
+                  $clientResponse = ClientesController::showClientsController($itemClient, $valorClient);
+                  
+                  
+                  echo '  <td>'.$clientResponse['nombre']." ".$clientResponse['apellido'].'</td>';
+                  
+                  $itemUser = 'id';
+                  $userValue = $value['idVendedor'];
+                  
+                  $userResponse = UsuariosController::controllerMostrarUsuario($itemUser, $userValue);
+                  
+                  echo '  <td>'.$userResponse['nombre']." ".$userResponse['apellido'].'</td>
+                          <td>'.$value['metodoPago'].'</td>
+                          <td>Q '.number_format($value['neto'], 2).'</td>
+                          <td>Q '.number_format($value['total'], 2).'</td>
+                          <td>'.$value['fecha'].'</td>
+                          <td>
+                            <div class="btn-group">
+                              <button type=""
+                                      class="btn btn-info">
+                                <i class="fa fa-print text-white"></i>
+                              </button>
+                              <a href="index.php?ruta=editar_venta&idVenta='.$value["id"].'">
+                                <button type=""
+                                        class="btn btn-warning">
+                                  <i class="fa fa-pen text-white text-white"></i>
+                                </button>
+                              </a>
+                              <button type=""
+                                      class="btn btn-danger">
+                                <i class="fa fa-times"></i></button>
+                            </div>
+                          </td>
+                        </tr>';
+                }
+                
+              ?>
+              
+              
                 
               </tbody>
 

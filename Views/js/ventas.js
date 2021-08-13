@@ -80,7 +80,8 @@ $(".tableSales tbody").on("click", "button.agregarProducto", function(){
 '                      <div class="input-group">\n' +
 '                          <span class="input-group-text">\n' +
 '                            <button type="button" ' +
-'                                    class="btn btn-danger btn-xs quitarProducto" idProducto="'+idProducto+'">\n' +
+'                                    class="btn btn-danger btn-xs quitarProducto" ' +
+                '                     idProducto="'+idProducto+'">\n' +
 
 '                              <i class="fa fa-times"></i>\n' +
 '                            </button>\n' +
@@ -140,6 +141,39 @@ $(".tableSales tbody").on("click", "button.agregarProducto", function(){
         }
     });
 });
+
+
+//Desactivar boton de agregar cuando el producto se edite
+function quitarAgregarProducto(){
+
+    //id de productos eleginos en venta
+    let idProducto = $('.quitarProducto');
+
+    //captura de botones agregar
+    let botonesTabla = $('.tablaVentas tbody button.agregarProducto');
+
+    //obtener los diferenntes idProductos de la venta
+    for (let i = 0; i < idProducto.length; i++) {
+
+        //capturamos el id del boton
+        let boton = $(idProducto[i].attr('idProducto'));
+
+        //recorrido para desactivar los botones
+        for (let j = 0; j < botonesTabla.length; j++) {
+
+            if($(botonesTabla[j]).attr('idProducto') == boton){
+
+                $(botonesTabla[j]).removeClass('btn-primary agregarProducto');
+                $(botonesTabla[j]).addClass('btn-default');
+
+            }
+
+        }
+
+    }
+
+}
+
 
 
 

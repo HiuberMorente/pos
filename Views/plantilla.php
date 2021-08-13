@@ -76,6 +76,7 @@
         $_GET["ruta"] === "clientes" ||
         $_GET["ruta"] === "ventas" ||
         $_GET["ruta"] === "crear_venta" ||
+        $_GET["ruta"] === "editar_venta" ||
         $_GET["ruta"] === "reportes_venta" ||
         $_GET["ruta"] === "salir"
       ){
