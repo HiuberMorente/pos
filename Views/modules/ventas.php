@@ -29,6 +29,13 @@
             Agregar venta
           </button>
         </a>
+        
+        <button type="button" class="btn btn-default float-end" id="daterange-btn">
+          <span>
+            <i class="fa fa-calendar"></i> Rango de fecha
+          </span>
+          <i class="fa fa-caret-down"></i>
+        </button>
 
       </div>
       <div class="card-body">
@@ -87,7 +94,8 @@
                           <td>
                             <div class="btn-group">
                               <button type=""
-                                      class="btn btn-info">
+                                      class="btn btn-info btnImprimirFactura"
+                                      codigoVenta="'.$value["codigo"].'">
                                 <i class="fa fa-print text-white"></i>
                               </button>
                               <a href="index.php?ruta=editar_venta&idVenta='.$value["id"].'">

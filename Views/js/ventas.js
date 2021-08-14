@@ -1,11 +1,16 @@
-//ventas dinamicas
+//VARIABLE LOCALSTORAGE
 
-// $.ajax({
-//    url: "ajax/SalesDatatableAjax.ajax.php",
-//    success: function(response){
-//
-//    }
-// });
+if(localStorage.getItem('capturarRango') != null){
+
+    $('#daterange-btn span').html(localStorage.getItem('capturarRango'));
+
+}else {
+
+    $('#daterange-btn span').html('<i class="fa fa-calendar"></i>Rango de fecha');
+
+}
+
+
 
 $('.tableSales').DataTable({
     responsive: true,
@@ -645,7 +650,7 @@ $('.tableSales').on('draw.dt', function (){
 });
 
 //Eliminar Venta
-$('.btnEliminarVenta').click(function (){
+$(".tablas").on('click', ".btnEliminarVenta", function (){
 
     let idVenta = $(this).attr("idVenta");
 
@@ -668,4 +673,50 @@ $('.btnEliminarVenta').click(function (){
 
 
 });
+
+
+/**
+ *  IMPRIMIR FACTURA
+ */
+
+$(".tablas").on("click", ".btnImprimirFactura", function(){
+
+    var codigoVenta = $(this).attr("codigoVenta");
+
+    window.open('extensions/TCPDF-main/examples/Factura.php?codigo='+codigoVenta, '_blank');
+
+
+})
+
+
+//Date range as a button
+$('#daterange-btn').daterangepicker(
+    {
+        ranges   : {
+            'Hoy'       : [moment(), moment()],
+            'Ayer'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Últimos 7 días' : [moment().subtract(6, 'days'), moment()],
+            'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+            'Este Mes'  : [moment().startOf('month'), moment().endOf('month')],
+            'Último Mes'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+    },
+    function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+        var fechaInicial = start.format('YYYY-M-D');
+
+        var fechaFinal = end.format('YYYY-M-D');
+
+        var capturarRango = $('#daterange-btn span').html();
+
+        localStorage.setItem('capturarRango', capturarRango);
+
+    }
+
+);
+
+//CANCELAR DATARANGE PICKER
 

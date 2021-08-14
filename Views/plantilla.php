@@ -38,12 +38,15 @@
   <script src="/Views/plugins/sweetalert2/sweetalert2.all.js"></script>
 
   <!-- iCheck for checkboxes and radio inputs -->
-<!--  <link rel="stylesheet" href="/Views/plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
+
   <link href="/Views/plugins/icheck-1.0.3/skins/all.css" rel="stylesheet">
   
 <!--  select2-->
   <link href="/Views/plugins/select2/css/select2.min.css" rel="stylesheet">
 
+<!--  DataRange Picker-->
+  <link rel="stylesheet"
+        href="/Views/plugins/daterangepicker/daterangepicker.css">
 </head>
 
 <!--==================================
@@ -146,6 +149,11 @@
 
 <!--JQuerynumber-->
 <script src="/Views/plugins/jqueryNumber/jquery.number.js"></script>
+
+<!--DateRangePicker-->
+<script src="/Views/plugins/daterangepicker/moment.min.js"></script>
+<script src="/Views/plugins/daterangepicker/daterangepicker.js"></script>
+
 
 <!-- plantilla -->
 <script src="/Views/js/plantilla.js"></script>
