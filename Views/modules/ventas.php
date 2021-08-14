@@ -35,7 +35,7 @@
         <div class="row">
           <div class="col-lg-12">
 
-            <table id="tabla" class="table table-bordered table-striped display nowrap" style="width: 100%">
+            <table id="tabla" class="table table-bordered table-striped display nowrap hover tablas" style="width: 100%">
               <thead>
                 <tr>
 
@@ -92,13 +92,16 @@
                               </button>
                               <a href="index.php?ruta=editar_venta&idVenta='.$value["id"].'">
                                 <button type=""
-                                        class="btn btn-warning">
+                                        class="btn btn-warning btnEditarVenta"
+                                        idVenta="'.$value["id"].'">
                                   <i class="fa fa-pen text-white text-white"></i>
                                 </button>
                               </a>
                               <button type=""
-                                      class="btn btn-danger">
-                                <i class="fa fa-times"></i></button>
+                                      class="btn btn-danger btnEliminarVenta"
+                                      idVenta="'.$value["id"].'">
+                                <i class="fa fa-times"></i>
+                              </button>
                             </div>
                           </td>
                         </tr>';
@@ -106,11 +109,16 @@
                 
               ?>
               
-              
-                
               </tbody>
 
             </table>
+  
+  
+            <?php
+            $deleteSale = new VentasController();
+            $deleteSale -> deleteSaleController();
+  
+            ?>
 
           </div>
         </div>
@@ -120,5 +128,7 @@
 
   </section>
 </div>
+
+
 
 

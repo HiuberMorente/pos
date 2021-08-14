@@ -93,8 +93,31 @@ require_once "Connection.php";
       $statement->close();
       $statement = null;
     }
+  
     
     
+    public static function deleteSaleModel($tabla,  $datos)
+    {
+  
+      $statement = Connection::connect()->prepare("DELETE FROM $tabla WHERE id = :id");
+  
+      $statement->bindParam(":id", $datos, PDO::PARAM_INT);
+  
+      if ($statement->execute()) {
+        
+        return "ok";
+        
+      } else {
+        
+        return "error";
+        
+      }
+  
+      $statement->closeCursor();
+      $statement = null;
     
     
+    }
+  
+  
   }

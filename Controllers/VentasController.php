@@ -116,17 +116,16 @@
         
         //Formatear la tabla productos y clientes
   
-        $tablaVenta = "ventas";
+        $tabla = "ventas";
   
         $saleItem = "codigo";
         $saleValue = $_POST['editarVenta'];
         
-        $traerVenta = VentasModel::showSalesModel($tablaVenta, $saleItem, $saleValue);
+        $traerVenta = VentasModel::showSalesModel($tabla, $saleItem, $saleValue);
         
   
         //validar si vienen productos editados
         
-        $cambioProducto = false;
   
         if($_POST['listaProductos'] == ""){
     
@@ -146,26 +145,26 @@
   
           $totalProductosComprados = array();
   
-          foreach($productos as $key => $producto){
+          foreach($productos as $key => $value){
     
-            $totalProductosComprados[] = $producto['cantidad'];
+            $totalProductosComprados[] = $value['cantidad'];
     
             $tablaProductos = "productos";
     
             $item = "id";
-            $id = $producto["id"];
+            $id = $value["id"];
     
             $traerProductos = ProductosModel::modelMostrarProductos($tablaProductos, $item, $id);
     
     
             $ventas = "ventas"; //item1
-            $valorVenta = $traerProductos["ventas"] - $producto["cantidad"]; //valor 1
+            $valorVenta = $traerProductos["ventas"] - $value["cantidad"]; //valor 1
     
             $nuevaVenta = ProductosModel::updateProductModel($tablaProductos, $ventas, $valorVenta, $id);
     
     
             $stock = 'stock'; //item 2
-            $valorStock = $producto['cantidad'] + $traerProductos['stock']; //valor 2
+            $valorStock = $value['cantidad'] + $traerProductos['stock']; //valor 2
     
             $nuevoStock = ProductosModel::updateProductModel($tablaProductos, $stock, $valorStock, $id);
     
@@ -185,7 +184,7 @@
   
           $valor1 = $traerCliente['compras'] - array_sum($totalProductosComprados);
   
-          $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item1, $valor1, $id);
+          $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item1, $valor1, $valorCliente);
   
   
           //acutalizar compas del clliente y reducir stock y aumenar ventas de los productos
@@ -261,7 +260,7 @@
             'total' =>  $_POST['totalVenta'],
             'metodoPago' => $_POST['listaMetodoPago']);
 
-        $response = VentasModel::editSaleModel($tablaVenta, $datos);
+        $response = VentasModel::editSaleModel($tabla, $datos);
 
         if($response === "ok"){
           echo '<script>
@@ -281,5 +280,148 @@
       }
     
     }
+  
+    public static function deleteSaleController(){
+      
+      if(isset($_GET['idVenta'])){
+      
+        $tabla = 'ventas';
+        
+        $item = 'id';
+        $valor = $_GET['idVenta'];
+        
+        $traerVenta = VentasModel::showSalesModel($tabla, $item, $valor);
+        
+        
+        //actualizar fecha ultima compra
+  
+        $tablaClientes = 'clientes';
+        
+        $itemVentas = null;
+        $valorVentas = null;
+        
+        $traerVentas = VentasModel:: showSalesModel($tabla, $itemVentas, $valorVentas);
+        
+        $guardarFechas = array();
+  
+        foreach($traerVentas as $key => $value){
+        
+          if($value['idCliente'] == $traerVenta['idCliente']){
+            
+            $guardarFechas[] = $value['fecha'];
+            
+            
+          }
+          
+        }
+        
+        
+        if(count($guardarFechas ) > 1){
+        
+          if($traerVenta['fecha'] > $guardarFechas[count($guardarFechas) - 2] ){
+  
+            $item = "fechaUltimaCompra";
+            $valor = $guardarFechas[count($guardarFechas) - 2];
+            $valorIdCliente = $traerVenta['idCliente'];
+  
+            $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item, $valor, $valorIdCliente);
+          
+          }else {
+  
+            $item = "fechaUltimaCompra";
+            $valor = $guardarFechas[count($guardarFechas) - 1];
+            $valorIdCliente = $traerVenta['idCliente'];
+  
+            $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item, $valor, $valorIdCliente);
+            
+          }
+          
+        }else{
+  
+          $item = "fechaUltimaCompra";
+          $valor = "0000-00-00 00:00:00";
+          $valorIdCliente = $traerVenta['idCliente'];
+  
+          $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item, $valor, $valorIdCliente);
+          
+        }
+        
+        
+        //FORMATEAR TABLA DE PRODUCTOS
+  
+        $productos = json_decode($traerVenta['productos'], true);
+  
+        $totalProductosComprados = array();
+  
+        foreach($productos as $key => $producto){
     
+          $totalProductosComprados[] = $producto['cantidad'];
+    
+          $tablaProductos = "productos";
+    
+          $item = "id";
+          $id = $producto["id"];
+    
+          $traerProductos = ProductosModel::modelMostrarProductos($tablaProductos, $item, $id);
+    
+    
+          $ventas = "ventas"; //item1
+          $valorVenta = $traerProductos["ventas"] - $producto["cantidad"]; //valor 1
+    
+          $nuevaVenta = ProductosModel::updateProductModel($tablaProductos, $ventas, $valorVenta, $id);
+    
+    
+          $stock = 'stock'; //item 2
+          $valorStock = $producto['cantidad'] + $traerProductos['stock']; //valor 2
+    
+          $nuevoStock = ProductosModel::updateProductModel($tablaProductos, $stock, $valorStock, $id);
+    
+    
+        }
+  
+  
+        $tablaClientes = "clientes";
+  
+        $itemCliente = "id";
+  
+        $valorCliente = $traerVenta['idCliente'];
+  
+        $traerCliente = ClientesModel::showClientsModel($tablaClientes, $itemCliente, $valorCliente);
+  
+        $item1 = 'compras';
+  
+        $valor1 = $traerCliente['compras'] - array_sum($totalProductosComprados);
+        
+        
+        $comprasCliente = ClientesModel::updateClientModel($tablaClientes, $item1, $valor1, $valorCliente);
+  
+      
+        
+        /**
+         *ELIMINAR VENTA
+         *
+         */
+    
+//
+         $response = VentasModel::deleteSaleModel($tabla, $_GET['idVenta']);
+
+        if($response === "ok"){
+          echo '<script>
+                        Swal.fire({
+                            icon: "success",
+                            title: "¡La venta ha sido eliminada correctamente!",
+                            confirmButtonText: "Cerrar"
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = "ventas";
+                            }
+                        });
+
+                    </script>';
+        }
+    
+      }
+      
+    }
+  
   }

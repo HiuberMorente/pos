@@ -1,11 +1,11 @@
 //ventas dinamicas
 
-$.ajax({
-   url: "ajax/SalesDatatableAjax.ajax.php",
-   success: function(response){
-
-   }
-});
+// $.ajax({
+//    url: "ajax/SalesDatatableAjax.ajax.php",
+//    success: function(response){
+//
+//    }
+// });
 
 $('.tableSales').DataTable({
     responsive: true,
@@ -150,18 +150,18 @@ function quitarAgregarProducto(){
     let idProducto = $('.quitarProducto');
 
     //captura de botones agregar
-    let botonesTabla = $('.tablaVentas tbody button.agregarProducto');
+    let botonesTabla = $('.tableSales tbody button.agregarProducto');
 
     //obtener los diferenntes idProductos de la venta
     for (let i = 0; i < idProducto.length; i++) {
 
         //capturamos el id del boton
-        let boton = $(idProducto[i].attr('idProducto'));
+        let boton = $(idProducto[i]).attr('idProduct');
 
         //recorrido para desactivar los botones
         for (let j = 0; j < botonesTabla.length; j++) {
 
-            if($(botonesTabla[j]).attr('idProducto') == boton){
+            if($(botonesTabla[j]).attr('idProduct') == boton){
 
                 $(botonesTabla[j]).removeClass('btn-primary agregarProducto');
                 $(botonesTabla[j]).addClass('btn-default');
@@ -629,7 +629,43 @@ function listarMetodosPago(){
 }
 
 
+$(".tablas").on("click", ".btnEditarVenta", function(){
+
+    var idVenta = $(this).attr("idVenta");
+
+    window.location = "index.php?ruta=editar_venta&idVenta="+idVenta;
 
 
+})
 
+
+//navegar en la tabla
+$('.tableSales').on('draw.dt', function (){
+    quitarAgregarProducto();
+});
+
+//Eliminar Venta
+$('.btnEliminarVenta').click(function (){
+
+    let idVenta = $(this).attr("idVenta");
+
+    console.log(idVenta);
+
+    Swal.fire({
+        icon: "warning",
+        title: "¿Está seguro de borrar la venta?",
+        text: "¡Si no lo está puede cancelar la acción!",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, eliminar venta!",
+    }).then((result) => {
+        if(result.value){
+            window.location = "index.php?ruta=ventas&idVenta="+idVenta;
+        }
+    });
+
+
+});
 
