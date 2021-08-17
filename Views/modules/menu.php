@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="reportes_venta" class="nav-link">
+                            <a href="reportes" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Reporte de ventas</p>
                             </a>

@@ -47,6 +47,18 @@
 <!--  DataRange Picker-->
   <link rel="stylesheet"
         href="/Views/plugins/daterangepicker/daterangepicker.css">
+
+
+
+  <!--ChartJS-->
+<!--  <script src="/Views/plugins/chart.js/Chart.min.js"></script>-->
+
+
+<!--  <link rel="stylesheet"-->
+<!--        href="/Views/plugins/morris.js/morris.css">-->
+<!--  -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  
 </head>
 
 <!--==================================
@@ -80,7 +92,7 @@
         $_GET["ruta"] === "ventas" ||
         $_GET["ruta"] === "crear_venta" ||
         $_GET["ruta"] === "editar_venta" ||
-        $_GET["ruta"] === "reportes_venta" ||
+        $_GET["ruta"] === "reportes" ||
         $_GET["ruta"] === "salir"
       ){
 
@@ -112,8 +124,8 @@
 
 
 <!--==================================
-  JAVASCRIPT
-  ==================================-->
+JAVASCRIPT
+==================================-->
 <!-- jQuery -->
 <script src="/Views/plugins/jquery/jquery.min.js"></script>
 
@@ -154,6 +166,14 @@
 <script src="/Views/plugins/daterangepicker/moment.min.js"></script>
 <script src="/Views/plugins/daterangepicker/daterangepicker.js"></script>
 
+<!--  MorrisJS-->
+
+<!--<script src="/Views/plugins/raphael/raphael.min.js"></script>-->
+<!--<script src="/Views/plugins/morris.js/morris.min.js"></script>-->
+<!--2 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+3 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+4 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 
 <!-- plantilla -->
 <script src="/Views/js/plantilla.js"></script>
@@ -163,6 +183,7 @@
 <script src="/Views/js/productos.js"></script>
 <script src="/Views/js/clientes.js"></script>
 <script src="/Views/js/ventas.js"></script>
+<script src="/Views/js/reportes.js"></script>
 
 
 </body>

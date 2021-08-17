@@ -16,39 +16,41 @@
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
-  </section>
+    </div>
 
 
-  <!-- Main content -->
+ 
   <section class="content">
 
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Title</h3>
 
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
+    <div class="card">
+      
+      <div class="card-header">
+        <button type="button" class="btn btn-default" id="daterange-btnReporte">
+          <span>
+            <i class="fa fa-calendar"></i>
+           Rango de fecha
+          </span>
+
+          <i class="fa fa-caret-down"></i>
+        </button>
+      </div>
+      
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <?php
+              include 'reportes/graficoVentas.php';
+            ?>
+          </div>
         </div>
       </div>
-      <div class="card-body">
-        Start creating your amazing application!
-      </div>
-      <!-- /.card-body -->
-      <div class="card-footer">
-        Footer
-      </div>
-      <!-- /.card-footer-->
+      
     </div>
-    <!-- /.card -->
+   
 
   </section>
-  <!-- /.content -->
+  
 </div>
-<!-- /.content-wrapper -->
+
+

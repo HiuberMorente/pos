@@ -6,35 +6,82 @@ require_once "Connection.php";
     
     public static function showSalesModel($table, $item, $value){
       
-      if ($item != null) {
+      if ($item !== null) {
     
-        $statement = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item ORDER BY id ASC");
+        $statement = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item ORDER BY id");
     
         $statement->bindParam(":" . $item, $value, PDO::PARAM_STR);
     
         $statement->execute();
     
         return $statement->fetch();
-    
-        $statement->close();
-    
-        $statement = null;
+        
     
       } else {
     
-        $statement = Connection::connect()->prepare("SELECT * FROM $table ORDER BY id ASC");
+        $statement = Connection::connect()->prepare("SELECT * FROM $table ORDER BY id");
     
         $statement->execute();
     
         return $statement->fetchAll();
-    
-        $statement->close();
-    
-        $statement = null;
+        
     
       }
+  
+      $statement->close();
+  
+      $statement = null;
     }
     
+    
+    public static function showRageSalesDateModel($table, $fechaInicial, $fechaFinal){
+    
+      if($fechaInicial == null){
+  
+        $statement = Connection::connect()->prepare("SELECT * FROM $table ORDER BY id");
+  
+        $statement->execute();
+  
+        return $statement->fetchAll();
+        
+      }
+  
+      if($fechaInicial == $fechaFinal){
+  
+        $statement = Connection::connect()->prepare("SELECT * FROM $table WHERE fecha like '%$fechaFinal%'");
+        
+        $statement -> bindParam(":fecha", $fechaFinal, PDO::PARAM_STR);
+  
+        $statement->execute();
+  
+        return $statement->fetchAll();
+      
+      }
+      
+      $fechaActual = new DateTime();
+      $fechaActual -> add(new DateInterval('P1D'));
+      $fechaActualMasUno = $fechaActual -> format('Y-m-d');
+      
+      $fechaFinal2 = new DateTime($fechaFinal);
+      $fechaFinal2 -> add(new DateInterval('P1D'));
+      $fechaFinalMasUno = $fechaFinal2 -> format('Y-m-d');
+      
+      if($fechaFinalMasUno == $fechaActualMasUno){
+  
+        $statement = Connection::connect()->prepare("SELECT * FROM $table WHERE fecha BETWEEN '$fechaInicial' AND '$fechaActualMasUno'");
+        
+      }else {
+        
+        $statement = Connection::connect()->prepare("SELECT * FROM $table WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal'");
+        
+      }
+  
+  
+      $statement->execute();
+  
+      return $statement->fetchAll();
+  
+    }
     
     //guardar venta
     public static function createSaleModel($tabla, $datos){
@@ -94,7 +141,6 @@ require_once "Connection.php";
       $statement = null;
     }
   
-    
     
     public static function deleteSaleModel($tabla,  $datos)
     {

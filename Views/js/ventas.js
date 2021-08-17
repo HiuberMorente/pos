@@ -6,7 +6,7 @@ if(localStorage.getItem('capturarRango') != null){
 
 }else {
 
-    $('#daterange-btn span').html('<i class="fa fa-calendar"></i>Rango de fecha');
+    $('#daterange-btn span').html('<i class="fa fa-calendar"></i> Rango de fecha');
 
 }
 
@@ -518,7 +518,7 @@ $('#nuevoMetodoPago').change(function (){
 
                 '<div class="form-group col-sm-6"' +
                 '     id="capturarCambioEfectivo"' +
-                '     style="padding-left: 0px">' +
+                '     style="padding-left: 0">' +
                 '   <div class="input-group">' +
                 '       <span class="input-group-text">' +
                 '           <i class="fab fa-quora"></i>'+
@@ -692,6 +692,7 @@ $(".tablas").on("click", ".btnImprimirFactura", function(){
 //Date range as a button
 $('#daterange-btn').daterangepicker(
     {
+
         ranges   : {
             'Hoy'       : [moment(), moment()],
             'Ayer'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -700,23 +701,77 @@ $('#daterange-btn').daterangepicker(
             'Este Mes'  : [moment().startOf('month'), moment().endOf('month')],
             'Último Mes'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
+        startDate: moment(),
+        endDate  : moment(),
+        alwaysShowCalendars: true,
     },
     function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#daterange-btn span').html(start.format('MMMM DD, YYYY') + ' - ' + end.format('MMMM DD, YYYY'));
 
-        var fechaInicial = start.format('YYYY-M-D');
+        var fechaInicial = start.format('YYYY-MM-DD');
 
-        var fechaFinal = end.format('YYYY-M-D');
+        var fechaFinal = end.format('YYYY-MM-DD');
 
         var capturarRango = $('#daterange-btn span').html();
 
         localStorage.setItem('capturarRango', capturarRango);
+
+        window.location = 'index.php?ruta=ventas&fechaInicial=' + fechaInicial + '&fechaFinal=' + fechaFinal;
 
     }
 
 );
 
 //CANCELAR DATARANGE PICKER
+$('#daterange-btn').on('cancel.daterangepicker', function (){
+   localStorage.removeItem('capturarRango');
+   localStorage.clear();
+   window.location = 'ventas';
+});
 
+
+
+//CAPTURAR EL DIA DE HOY
+$('.daterangepicker .ranges li').on('click', function (){
+   let atributoDatePickerHoy = $(this).attr('data-range-key');
+
+   if(atributoDatePickerHoy === 'Hoy'){
+
+       let currentDate = new Date();
+
+       let day = currentDate.getDate();
+       let month = currentDate.getMonth() + 1;
+       let year = currentDate.getFullYear();
+
+        var fechaInicial;
+        var fechaFinal;
+
+       if(month < 10){
+
+           fechaInicial = year + '-0' + month + '-' + day;
+            fechaFinal = year + '-0' + month + '-' + day;
+
+       }else if(day < 10){
+
+            fechaInicial = year + '-' + month + '-0' + day;
+            fechaFinal = year + '-' + month + '-0' + day;
+
+       }else if(month < 10 && day < 10){
+
+            fechaInicial = year + '-0' + month + '-0' + day;
+            fechaFinal = year + '-0' + month + '-0' + day;
+
+       }else {
+
+            fechaInicial = year + '-' + month + '-' + day;
+            fechaFinal = year + '-' + month + '-' + day;
+
+       }
+
+
+       localStorage.setItem('capturarRango', 'Hoy');
+
+       window.location = 'index.php?ruta=ventas&fechaInicial=' + fechaInicial + '&fechaFinal=' + fechaFinal;
+   }
+
+});

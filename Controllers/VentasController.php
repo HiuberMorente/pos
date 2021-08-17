@@ -9,6 +9,13 @@
     
     }
     
+    public static function showRangeSalesDateController($fechaInicial, $fechaFinal){
+  
+      $table = "ventas";
+      
+      return VentasModel::showRageSalesDateModel($table, $fechaInicial, $fechaFinal);
+    
+    }
     
     public static function createSaleController(){
       

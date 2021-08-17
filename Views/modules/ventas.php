@@ -11,7 +11,11 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="inicio" class=" text-dark"></i>Inicio</a></li>
+            <li class="breadcrumb-item">
+              <a href="inicio" class=" text-dark">
+                Inicio
+              </a>
+            </li>
             <li class="breadcrumb-item active">Administrar ventas</li>
           </ol>
         </div>
@@ -32,8 +36,10 @@
         
         <button type="button" class="btn btn-default float-end" id="daterange-btn">
           <span>
-            <i class="fa fa-calendar"></i> Rango de fecha
+            <i class="fa fa-calendar"></i>
+           Rango de fecha
           </span>
+          
           <i class="fa fa-caret-down"></i>
         </button>
 
@@ -62,10 +68,20 @@
               <tbody>
               
               <?php
-                $item = null;
-                $valor = null;
+              
+                if(isset($_GET['fechaInicial'])){
+                  
+                  $fechaInicial = $_GET['fechaInicial'];
+                  $fechaFinal = $_GET['fechaFinal'];
+                  
+                }else{
+                  
+                  $fechaInicial = null;
+                  $fechaFinal = null;
+                  
+                }
                 
-                $response = VentasController::showSalesController($item, $valor);
+                $response = VentasController::showRangeSalesDateController($fechaInicial, $fechaFinal);
                 
                 foreach($response as $key => $value){
                 

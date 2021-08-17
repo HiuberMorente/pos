@@ -11,7 +11,11 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="inicio" class=" text-dark"></i>Inicio</a></li>
+            <li class="breadcrumb-item">
+              <a href="inicio" class=" text-dark">
+                Inicio
+              </a>
+            </li>
             <li class="breadcrumb-item active">Administrar clientes</li>
           </ol>
         </div>
