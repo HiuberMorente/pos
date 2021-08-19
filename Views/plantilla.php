@@ -48,16 +48,24 @@
   <link rel="stylesheet"
         href="/Views/plugins/daterangepicker/daterangepicker.css">
 
-
+<!--  Ionicons-->
+<!--  <link rel="stylesheet"-->
+<!--        href="/Views/plugins/Ionicons/ionicons.min.css">-->
 
   <!--ChartJS-->
-<!--  <script src="/Views/plugins/chart.js/Chart.min.js"></script>-->
+  <script src="/Views/plugins/chart.js/Chart.min.js"></script>
 
 
-<!--  <link rel="stylesheet"-->
-<!--        href="/Views/plugins/morris.js/morris.css">-->
-<!--  -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+  
+ 
+
+  <!--  MorrisJS-->
+  <link rel="stylesheet" href="/Views/plugins/morris.js/morris.css">
+  <script src="/Views/plugins/jquery/jquery.min.js"></script>
+  <script src="/Views/plugins/raphael/raphael.min.js"></script>
+  <script src="/Views/plugins/morris.js/morris.min.js"></script>
+
   
 </head>
 
@@ -166,13 +174,9 @@ JAVASCRIPT
 <script src="/Views/plugins/daterangepicker/moment.min.js"></script>
 <script src="/Views/plugins/daterangepicker/daterangepicker.js"></script>
 
-<!--  MorrisJS-->
 
-<!--<script src="/Views/plugins/raphael/raphael.min.js"></script>-->
-<!--<script src="/Views/plugins/morris.js/morris.min.js"></script>-->
-<!--2 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
-3 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-4 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+
 
 
 <!-- plantilla -->

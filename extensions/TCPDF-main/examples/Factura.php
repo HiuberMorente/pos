@@ -53,7 +53,7 @@ $responseCliente = ClientesController::showClientsController($itemCliente, $valo
 $itemVendedor = 'id';
 $valorVendedor = $responseSale['idVendedor'];
 
-$responseVendedor = UsuariosController::controllerMostrarUsuario($itemVendedor, $valorVendedor);
+$responseVendedor = UsuariosController::showUsersController($itemVendedor, $valorVendedor);
 
 
 //REQERIMIENTOS DE LA FACTURA (TCPDF)
@@ -161,7 +161,7 @@ $itemProducto = 'descripcion';
 $valorProducto = $item['descripcion'];
 $orden = null;
 
-$responseProducto = ProductosController::controllerMostrarProductos($itemProducto, $valorProducto, $orden);
+$responseProducto = ProductosController::showProductsController($itemProducto, $valorProducto, $orden);
 
 $valorUnitario = number_format($responseProducto['precioVenta'], 2);
 

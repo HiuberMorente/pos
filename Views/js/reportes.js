@@ -1,6 +1,6 @@
 //VARIABLE LOCALSTORAGE
 
-if(localStorage.getItem('capturarRango') != null){
+if(localStorage.getItem('capturarRangoReporte') !== null){
 
     $('#daterange-btnReporte span').html(localStorage.getItem('capturarRangoReporte'));
 
@@ -14,7 +14,6 @@ if(localStorage.getItem('capturarRango') != null){
 
 $('#daterange-btnReporte').daterangepicker(
     {
-
         ranges   : {
             'Hoy'       : [moment(), moment()],
             'Ayer'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -28,7 +27,7 @@ $('#daterange-btnReporte').daterangepicker(
         alwaysShowCalendars: true,
     },
     function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM DD, YYYY') + ' - ' + end.format('MMMM DD, YYYY'));
+        $('#daterange-btnReporte span').html(start.format('MMMM DD, YYYY') + ' - ' + end.format('MMMM DD, YYYY'));
 
         var fechaInicial = start.format('YYYY-MM-DD');
 
@@ -55,12 +54,10 @@ $('#daterange-btnReporte').on('cancel.daterangepicker', function (){
 
 //CAPTURAR EL DIA DE HOY
 
-$('#daterange-btnReporte').on('click', function (){
-
-});
-
-$('.daterangepicker .ranges li').on('click','#datereange-btnReporte', function (){
+$('.daterangepicker.opensright .ranges li').on('click', function (){
     let atributoDatePickerHoy = $(this).attr('data-range-key');
+
+    console.log(atributoDatePickerHoy);
 
     if(atributoDatePickerHoy === 'Hoy'){
 

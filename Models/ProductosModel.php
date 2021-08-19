@@ -5,7 +5,7 @@
   class ProductosModel{
 
     // MOSTRAR PRODUCTOS
-    public static function modelMostrarProductos($tabla, $item, $valor){
+    public static function showProductsModel($tabla, $item, $valor, $order){
 
       if($item !== null){
 
@@ -18,7 +18,7 @@
         return $statement->fetch();
 
       }else{
-        $statement = Connection::connect()->query("SELECT * FROM $tabla");
+        $statement = Connection::connect()->query("SELECT * FROM $tabla ORDER BY $order DESC");
   
         $statement->execute();
   
@@ -31,7 +31,7 @@
     }
 
 
-    public static function modelIngresarProducto($table, $data){
+    public static function createProductModel($table, $data){
 
       $statement = Connection::connect()->prepare("INSERT INTO $table(idCategoria, codigo, descripcion, imagen, stock, precioCompra, precioVenta) VALUES(:idCategoria, :codigo, :descripcion, :imagen, :stock, :precioCompra, :precioVenta)");
 
@@ -122,6 +122,34 @@
       $statement = null;
     
     }
+  
+    public static function showSumOfSalesModel($tabla)
+    {
+  
+      $statement = Connection::connect()->prepare("SELECT SUM(ventas) as total FROM $tabla");
+      
+      $statement -> execute();
+      
+      return $statement -> fetch();
+  
+      $statement -> close();
+      $statement = null;
+      
     
-
+    }
+  
+    public static function showSumOfProductosModel($tabla, $valor)
+    {
+      $statement = Connection::connect()->prepare("SELECT SUM($valor) as $valor FROM $tabla"); //sin impuestos
+  
+      $statement -> execute();
+  
+      return $statement -> fetch();
+  
+      $statement -> close();
+      $statement = null;
+      
+    }
+  
+  
   }

@@ -13,26 +13,35 @@
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              
+              <?php
+              
+              if($_SESSION['perfil'] === 'Administrador'){
+                
+                 echo '<li class="nav-item">
+                  <a href="inicio" class="nav-link">
+                    <i class="nav-icon fa fa-home"></i>
+                    <p>
+                      Inicio
+                    </p>
+                  </a>
+                 </li>
+  
+                  <li class="nav-item">
+                      <a href="usuarios" class="nav-link">
+                          <i class="nav-icon fa fa-user"></i>
+                          <p>
+                              Usuarios
+                          </p>
+                      </a>
+                  </li>';
+                
+              }
 
-                <li class="nav-item">
-                    <a href="inicio" class="nav-link">
-                        <i class="nav-icon fa fa-home"></i>
-                        <p>
-                            Inicio
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="usuarios" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>
-                            Usuarios
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
+              if($_SESSION['perfil'] === 'Administrador' || $_SESSION['perfil'] === 'Especial'){
+              
+            
+                echo '<li class="nav-item">
                     <a href="categorias" class="nav-link">
                         <i class="nav-icon fa fa-th"></i>
                         <p>
@@ -47,23 +56,34 @@
                             Productos
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="clientes" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>
-                            Clientes
-                        </p>
-                    </a>
-                </li>
+                </li>';
+                
+                
+              }
 
-                <li class="nav-item">
+
+              if($_SESSION['perfil'] === 'Administrador' || $_SESSION['perfil'] === 'Vendedor'){
+
+                 echo '<li class="nav-item">
+                        <a href="clientes" class="nav-link">
+                            <i class="nav-icon fa fa-user"></i>
+                            <p>
+                                Clientes
+                            </p>
+                        </a>
+                    </li>';
+                  
+              }
+
+              if($_SESSION['perfil'] === 'Administrador' || $_SESSION['perfil'] === 'Vendedor'){
+                
+                echo '  <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-list-ul "></i>
                         <p>
                             Ventas
                             <i class="right fas fa-angle-left"></i>
-
+  
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -78,17 +98,27 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Crear venta</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="reportes" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Reporte de ventas</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                        </li>';
+                
+                  
 
-
+                  if($_SESSION['perfil'] === 'Administrador'){
+      
+      
+                    echo '<li class="nav-item">
+                                <a href="reportes" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de ventas</p>
+                                </a>
+                            </li>;';
+                  }
+  
+  
+                  echo '</ul >
+                    </li >';
+                
+              }
+              ?>
             </ul>
         </nav>
     </div>

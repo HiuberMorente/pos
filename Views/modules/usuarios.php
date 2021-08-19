@@ -1,3 +1,15 @@
+<?php
+
+if($_SESSION['perfil'] === "Especial" || $_SESSION['perfil'] === "Vendedor" ){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -64,7 +76,7 @@
 
               $item = null;
               $valor = null;
-              $usuarios = UsuariosController::controllerMostrarUsuario($item, $valor);
+              $usuarios = UsuariosController::showUsersController($item, $valor);
 
               foreach ($usuarios as $key => $value) {
 
@@ -441,7 +453,7 @@ MODAL EDITAR USUARIO
           <?php
 
           $crearUsuario = new UsuariosController();
-          $crearUsuario->controllerEditarUsuario();
+          $crearUsuario->editUserController();
 
           ?>
 
@@ -455,6 +467,6 @@ MODAL EDITAR USUARIO
 <?php
 
 $borrarUsuario = new UsuariosController();
-$borrarUsuario->controllerBorrarUsuario();
+$borrarUsuario->deleteUserController();
 
 ?>

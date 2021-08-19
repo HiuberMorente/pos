@@ -65,8 +65,9 @@ class SalesDatatableAjax{
     
     $item = null;
     $valor = null;
+    $order = 'id';
     
-    $products = ProductosController::controllerMostrarProductos($item, $valor);
+    $products = ProductosController::showProductsController($item, $valor, $order);
     
     $jsonData = '{
                     "data": [';

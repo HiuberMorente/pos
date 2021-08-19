@@ -34,7 +34,7 @@ require_once "Connection.php";
     }
     
     
-    public static function showRageSalesDateModel($table, $fechaInicial, $fechaFinal){
+    public static function showRangeSalesDateModel($table, $fechaInicial, $fechaFinal){
     
       if($fechaInicial == null){
   
@@ -163,6 +163,20 @@ require_once "Connection.php";
       $statement = null;
     
     
+    }
+  
+    public static function showSumOfSalesModel($tabla, $valor)
+    {
+  
+      $statement = Connection::connect()->prepare("SELECT SUM($valor) as $valor FROM $tabla"); //sin impuestos
+  
+      $statement -> execute();
+  
+      return $statement -> fetch();
+  
+      $statement -> close();
+      $statement = null;
+      
     }
   
   

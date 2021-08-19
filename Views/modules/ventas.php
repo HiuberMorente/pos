@@ -1,3 +1,15 @@
+<?php
+
+if($_SESSION['perfil'] === "Especial"){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -53,7 +65,7 @@
                 <tr>
 
                   <th style="width: 10px" >#</th>
-                  <th>Código de Factura</th>
+                  <th>Código Factura</th>
                   <th>Cliente</th>
                   <th>Vendedor</th>
                   <th>Forma de Pago</th>
@@ -100,7 +112,7 @@
                   $itemUser = 'id';
                   $userValue = $value['idVendedor'];
                   
-                  $userResponse = UsuariosController::controllerMostrarUsuario($itemUser, $userValue);
+                  $userResponse = UsuariosController::showUsersController($itemUser, $userValue);
                   
                   echo '  <td>'.$userResponse['nombre']." ".$userResponse['apellido'].'</td>
                           <td>'.$value['metodoPago'].'</td>
@@ -113,22 +125,27 @@
                                       class="btn btn-info btnImprimirFactura"
                                       codigoVenta="'.$value["codigo"].'">
                                 <i class="fa fa-print text-white"></i>
-                              </button>
-                              <a href="index.php?ruta=editar_venta&idVenta='.$value["id"].'">
-                                <button type=""
-                                        class="btn btn-warning btnEditarVenta"
-                                        idVenta="'.$value["id"].'">
-                                  <i class="fa fa-pen text-white text-white"></i>
-                                </button>
-                              </a>
-                              <button type=""
-                                      class="btn btn-danger btnEliminarVenta"
-                                      idVenta="'.$value["id"].'">
-                                <i class="fa fa-times"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>';
+                              </button>';
+  
+                  if($_SESSION['perfil'] === 'Administrador'){
+                    
+                    echo '<a href = "index.php?ruta=editar_venta&idVenta='.$value["id"].'">
+                            <button type = ""
+                                    class="btn btn-warning btnEditarVenta"
+                                    idVenta = "'.$value["id"].'">
+                              <i class="fa fa-pen text-white text-white" ></i >
+                            </button >
+                          </a >
+                          <button type = ""
+                                  class="btn btn-danger btnEliminarVenta"
+                                  idVenta = "'.$value["id"].'">
+                            <i class="fa fa-times" ></i >
+                          </button >';
+                  }
+                  
+                  echo '</div>
+                      </td>
+                    </tr>';
                 }
                 
               ?>

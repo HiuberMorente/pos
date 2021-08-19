@@ -1,8 +1,17 @@
+// $.ajax({
+//   url: "ajax/ProductsDatatableAjax.ajax.php",
+//   success: function (response){
+//     console.log("repuesta", response);
+//   }
+// })
+
+
+var hiddenProfile = $('#perfilHidden').val();
 
 
 $('.productTable').DataTable({
   responsive: true,
-  "ajax": "ajax/ProductsDatatableAjax.ajax.php",
+  "ajax": "ajax/ProductsDatatableAjax.ajax.php?hiddenProfile="+ hiddenProfile,
   "deferRender": true,
   "retrieve": true,
   "processing": true,

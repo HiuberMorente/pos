@@ -4,19 +4,19 @@ class ProductosController
 {
   
   // MOSTRAR PRODUCTOS
-  public static function controllerMostrarProductos($item, $valor)
+  public static function showProductsController($item, $valor, $order)
   {
     
     $tabla = "productos";
     
-    return ProductosModel::modelMostrarProductos($tabla, $item, $valor);
+    return ProductosModel::showProductsModel($tabla, $item, $valor, $order);
     
   }
   
   /**
    * @throws Exception
    */
-  public static function controllerCreateProduct()
+  public static function createProductController()
   {
     
     if(isset($_POST["nuevaDescripcion"])){
@@ -94,7 +94,7 @@ class ProductosController
             "imagen" => $ruta
         );
         
-        $response = ProductosModel::modelIngresarProducto($table, $data);
+        $response = ProductosModel::createProductModel($table, $data);
         
         if($response === "ok"){
           echo '<script>
@@ -276,5 +276,21 @@ class ProductosController
      }
   }
   
+  /**
+   * Mostrar suma de ventas
+   */
+  public static function showSumOfSalesController(){
+  
+    $tabla = 'productos';
+    
+    return ProductosModel::showSumOfSalesModel($tabla);
+    
+  }
+  
+  public static function showSumOfProductsController($valor){
+    $tabla ='productos';
+    
+    return ProductosModel::showSumOfProductosModel($tabla, $valor);
+  }
   
 }

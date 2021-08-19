@@ -1,4 +1,19 @@
-<div class="content-wrapper">
+<?php
+
+if($_SESSION['perfil'] === "Especial"){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
+
+
+
+  <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -67,35 +82,40 @@
                 $valor = null;
                 $clients = ClientesController::showClientsController($item, $valor);
               foreach($clients as $key => $client){
-                  echo '<tr>
-                          <td>'.($key + 1).'</td>
-                          <td>'.$client["nombre"].'</td>
-                          <td>'.$client["apellido"].'</td>
-                          <td>'.$client["nit"].'</td>
-                          <td>'.$client["email"].'</td>
-                          <td>'.$client["telefono"].'</td>
-                          <td>'.$client["direccion"].'</td>
-                          <td>'.$client["compras"].'</td>
-                          <td>'.$client["fechaUltimaCompra"].'</td>
-                          <td>'.$client["fechaRegistro"].'</td>
-                          <td>
-                            <div class="btn-group">
-                              <button type=""
-                                class="btn btn-warning btnEditClient"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalEditarCliente"
-                                idClient="'.$client["id"].'">
-                                  <i class="fa fa-pen text-white"></i>
-                              </button>
-                              <button type=""
-                              class="btn btn-danger btnEliminarCliente"
-                              idClient="'.$client["id"].'">
-                                <i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                          </td>
-                        </tr>';
+                echo '<tr>
+                  <td>'.($key + 1).'</td>
+                  <td>'.$client["nombre"].'</td>
+                  <td>'.$client["apellido"].'</td>
+                  <td>'.$client["nit"].'</td>
+                  <td>'.$client["email"].'</td>
+                  <td>'.$client["telefono"].'</td>
+                  <td>'.$client["direccion"].'</td>
+                  <td>'.$client["compras"].'</td>
+                  <td>'.$client["fechaUltimaCompra"].'</td>
+                  <td>'.$client["fechaRegistro"].'</td>
+                  <td>
+                    <div class="btn-group">
+                      <button type=""
+                        class="btn btn-warning btnEditClient"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditarCliente"
+                        idClient="'.$client["id"].'">
+                          <i class="fa fa-pen text-white"></i>
+                      </button>';
+          
+                  if($_SESSION['perfil'] === 'Administrador'){
+
+                    echo '<button type=""
+                            class="btn btn-danger btnEliminarCliente"
+                            idClient="' . $client["id"] . '">
+                              <i class="fa fa-times"></i>
+                          </button>';
                   }
+                  
+                  echo '</div>
+                  </td>
+                </tr>';
+              }
               ?>
                 
               </tbody>
@@ -221,20 +241,20 @@ MODAL
               
               
               <!-- fecha -->
-              <div class="input-group mb-3">
-                <span class="input-group-text">
-                  <i class="far fa-calendar-alt"></i>
-                </span>
-                <input type="text"
-                       class="form-control input-lg"
-                       name="nuevaUltimaCompra"
-                       placeholder="Ingresar ultima compra"
-                       data-inputmask-alias="datetime"
-                       data-inputmask-inputformat="dd/mm/yyyy"
-                       data-mask
-                       required>
-              </div>
-              
+<!--              <div class="input-group mb-3">-->
+<!--                <span class="input-group-text">-->
+<!--                  <i class="far fa-calendar-alt"></i>-->
+<!--                </span>-->
+<!--                <input type="text"-->
+<!--                       class="form-control input-lg"-->
+<!--                       name="nuevaUltimaCompra"-->
+<!--                       placeholder="Ingresar ultima compra"-->
+<!--                       data-inputmask-alias="datetime"-->
+<!--                       data-inputmask-inputformat="dd/mm/yyyy"-->
+<!--                       data-mask-->
+<!--                       required>-->
+<!--              </div>-->
+<!--              -->
 
             </div>
 
@@ -373,20 +393,20 @@ MODAL EDITAR
               </div>
 
 
-              <!-- fecha -->
-              <div class="input-group mb-3">
-                <span class="input-group-text">
-                  <i class="far fa-calendar-alt"></i>
-                </span>
-                <input type="text"
-                       class="form-control input-lg"
-                       name="editarFechaRegistro"
-                       id="editarFechaRegistro"
-                       data-inputmask-alias="datetime"
-                       data-inputmask-inputformat="yyyy/mm/dd"
-                       data-mask
-                       required>
-              </div>
+<!--               fecha -->
+<!--              <div class="input-group mb-3">-->
+<!--                <span class="input-group-text">-->
+<!--                  <i class="far fa-calendar-alt"></i>-->
+<!--                </span>-->
+<!--                <input type="text"-->
+<!--                       class="form-control input-lg"-->
+<!--                       name="editarFechaRegistro"-->
+<!--                       id="editarFechaRegistro"-->
+<!--                       data-inputmask-alias="datetime"-->
+<!--                       data-inputmask-inputformat="yyyy/mm/dd"-->
+<!--                       data-mask-->
+<!--                       required>-->
+<!--              </div>-->
 
 
             </div>

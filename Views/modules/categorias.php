@@ -1,3 +1,16 @@
+<?php
+
+if($_SESSION['perfil'] === "Vendedor"){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -63,14 +76,19 @@
                             <td>                    
                               <div class="btn-group">
                                 
-                                <button type="" class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'"  data-bs-toggle="modal" data-bs-target="#EditarCategoria"><i class="fa fa-pen text-white"></i></button>
-                                
-                                <button type="" class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["id"].'" ><i class="fa fa-times" ></i></button>
-        
-                              </div>
-                            </td>
+                                <button type="" class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'"  data-bs-toggle="modal" data-bs-target="#EditarCategoria">
+                                  <i class="fa fa-pen text-white"></i>
+                                </button>';
                     
-                          </tr>';
+                    if($_SESSION['perfil'] === 'Administrador'){
+  
+                      echo '<button type = "" class="btn btn-danger btnEliminarCategoria" idCategoria = "'.$value["id"].'" >
+                              <i class="fa fa-times" ></i >
+                            </button >';
+                    }
+                       echo'</div>
+                          </td>
+                        </tr>';
                   }
 
                 ?>

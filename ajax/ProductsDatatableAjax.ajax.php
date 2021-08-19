@@ -18,8 +18,9 @@
 
       $item = null;
       $valor = null;
+      $order = 'id';
 
-      $products = ProductosController::controllerMostrarProductos($item, $valor);
+      $products = ProductosController::showProductsController($item, $valor, $order);
 
       $jsonData = '{
                     "data": [';
@@ -28,10 +29,18 @@
 
         $image = "<img src='". $product["imagen"]."' alt='productImage' style='width: 40px;'>";
 
-        $buttons = "<div class='btn-group'><button class='btn btn-warning btnEditProducts' idProduct='"
-           . $product["id"]."' data-bs-toggle='modal' data-bs-target='#modalEditProduct'><i class='fa fa-pen text-white'></i></button><button class='btn btn-danger btnDeleteProduct' idProduct='"
-           . $product["id"]."' codigo='". $product["codigo"]."' image='". $product["imagen"]
-           ."'><i class='fa fa-times'></i></button></div>";
+        if(isset($_GET['hiddenProfile']) && $_GET['hiddenProfile'] === 'Especial'){
+  
+          $buttons = "<div class='btn-group'><button class='btn btn-warning btnEditProducts' idProduct='"
+              . $product["id"]."' data-bs-toggle='modal' data-bs-target='#modalEditProduct'><i class='fa fa-pen text-white'></i></button></div>";
+          
+        }else {
+          
+          $buttons = "<div class='btn-group'><button class='btn btn-warning btnEditProducts' idProduct='"
+             . $product["id"]."' data-bs-toggle='modal' data-bs-target='#modalEditProduct'><i class='fa fa-pen text-white'></i></button><button class='btn btn-danger btnDeleteProduct' idProduct='"
+             . $product["id"]."' codigo='". $product["codigo"]."' image='". $product["imagen"]
+             ."'><i class='fa fa-times'></i></button></div>";
+        }
 
         $item = "id";
         $valor = $products[$key]["idCategoria"];
@@ -43,7 +52,7 @@
 
           $stock = "<button class='btn btn-danger'>". $product["stock"]."</button>";
 
-        }elseif($product["stock"] > 11 && $product["stock"] <= 15){
+        }elseif($product["stock"] > 10 && $product["stock"] <= 15){
 
           $stock = "<button class='btn btn-warning'>". $product["stock"]."</button>";
 

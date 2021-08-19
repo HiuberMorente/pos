@@ -15,7 +15,7 @@
 
       $item = "id";
       $valor = $this->userId;
-      $respuesta = UsuariosController::controllerMostrarUsuario($item, $valor);
+      $respuesta = UsuariosController::showUsersController($item, $valor);
 
       echo json_encode($respuesta, JSON_THROW_ON_ERROR);
     }
@@ -57,7 +57,7 @@
 
       $item = "usuario";
       $valor = $this->validateUser;
-      $respuesta = UsuariosController::controllerMostrarUsuario($item, $valor);
+      $respuesta = UsuariosController::showUsersController($item, $valor);
   
       echo json_encode($respuesta, JSON_THROW_ON_ERROR);
      

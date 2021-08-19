@@ -1,7 +1,12 @@
+<?php
+error_reporting(0);
+?>
+
  <div class="login-page">
    <div class="login-box">
      <div class="login-logo">
        <img src="Views/img/plantilla/logo-blanco-bloque.png" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">
+<!--       <img src="Views/img/plantilla/ferreteria-png.jpg" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">-->
      </div>
 
      <div class="card">
@@ -40,7 +45,7 @@
            <?php
 
             $login = new UsuariosController();
-            $login->controllerUsuarioIngreso();
+            $login->loginUserController();
 
             ?>
 

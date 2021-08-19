@@ -44,7 +44,7 @@
                       $userItem = "id";
                       $userValue = $venta['idVendedor'];
                       
-                      $vendedor = UsuariosController::controllerMostrarUsuario($userItem, $userValue);
+                      $vendedor = UsuariosController::showUsersController($userItem, $userValue);
 
                       $userItem = "id";
                       $userValue = $venta['idCliente'];
@@ -140,8 +140,9 @@
                           
                           $item = 'id';
                           $valor = $value['id'];
+                          $order = 'id';
                           
-                          $productResponse = ProductosController::controllerMostrarProductos($item, $valor);
+                          $productResponse = ProductosController::showProductsController($item, $valor, $order);
                           
                           $stockAntiguo = $productResponse['stock'] + $value['cantidad'];
                           

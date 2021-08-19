@@ -83,8 +83,7 @@
             "nit" => $_POST["editarNIT"],
             "email" => $_POST["editarEmail"],
             "telefono" => $_POST["editarTelefono"],
-            "direccion" => $_POST["editarDireccion"],
-            "fechaRegistro" => $_POST["editarFechaRegistro"]
+            "direccion" => $_POST["editarDireccion"]
         );
         
         $response = ClientesModel::editClientModel($table, $data);

@@ -1,3 +1,15 @@
+<?php
+
+if($_SESSION['perfil'] === "Especial" || $_SESSION['perfil'] === "Vendedor"){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -26,23 +38,74 @@
     <div class="card">
       
       <div class="card-header">
-        <button type="button" class="btn btn-default" id="daterange-btnReporte">
-          <span>
-            <i class="fa fa-calendar"></i>
-           Rango de fecha
-          </span>
+        <div class="card-title">
+          <button type="button" class="btn btn-default" id="daterange-btnReporte">
+            <span>
+              <i class="fa fa-calendar"></i>
+             Rango de fecha
+            </span>
+  
+            <i class="fa fa-caret-down"></i>
+          </button>
+        </div>
+        
+        <div class="card-tools" style="margin-right: 3px">
+          
+          <?php
+          
+          if(isset($_GET['fechaInicial'])){
+            
+            echo '<a href="/Views/modules/descargarReporte.php?reporte=reporte&fechaInicial='. $_GET["fechaInicial"]
+                .'&fechaFinal='.$_GET["fechaFinal"].'" >';
+            
+          }else{
+  
+            echo '<a href="/Views/modules/descargarReporte.php?reporte=reporte">';
+            
+          }
+          
+          ?>
+          
+            <button class="btn btn-success" >Descargar Reporte en Excel</button>
+          
+          </a>
+          
+        </div>
+          
+       
+        
+        
 
-          <i class="fa fa-caret-down"></i>
-        </button>
+        
+      
       </div>
       
       <div class="card-body">
         <div class="row">
+          
           <div class="col-sm-12">
             <?php
               include 'reportes/graficoVentas.php';
             ?>
           </div>
+          
+          <div class="col-md-6 col-sm-12">
+            <?php
+            include 'reportes/productosMasVendidos.php';
+            ?>
+          </div>
+          
+          <div class="col-md-6 col-sm-12">
+            <?php
+            include 'reportes/vendedores.php';
+
+            include 'reportes/compradores.php';
+            ?>
+            
+          </div>
+          
+         
+          
         </div>
       </div>
       

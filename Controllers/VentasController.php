@@ -13,7 +13,7 @@
   
       $table = "ventas";
       
-      return VentasModel::showRageSalesDateModel($table, $fechaInicial, $fechaFinal);
+      return VentasModel::showRangeSalesDateModel($table, $fechaInicial, $fechaFinal);
     
     }
     
@@ -36,8 +36,9 @@
 
           $item = "id";
           $id = $value["id"];
+          $order ='id';
 
-          $traerProductos = ProductosModel::modelMostrarProductos($tablaProductos, $item, $id);
+          $traerProductos = ProductosModel::showProductsModel($tablaProductos, $item, $id, $order);
 
           $ventas = "ventas"; //item1
 
@@ -160,8 +161,9 @@
     
             $item = "id";
             $id = $value["id"];
+            $order = "id";
     
-            $traerProductos = ProductosModel::modelMostrarProductos($tablaProductos, $item, $id);
+            $traerProductos = ProductosModel::showProductsModel($tablaProductos, $item, $id, $order);
     
     
             $ventas = "ventas"; //item1
@@ -209,8 +211,9 @@
     
             $item2 = "id";
             $id2 = $value["id"];
+            $order = "id";
     
-            $traerProductos2 = ProductosModel::modelMostrarProductos($tablaProductos2, $item2, $id2);
+            $traerProductos2 = ProductosModel::showProductsModel($tablaProductos2, $item2, $id2, $order);
     
             $ventas2 = "ventas"; //item1
     
@@ -368,8 +371,9 @@
     
           $item = "id";
           $id = $producto["id"];
+          $order = "id";
     
-          $traerProductos = ProductosModel::modelMostrarProductos($tablaProductos, $item, $id);
+          $traerProductos = ProductosModel::showProductsModel($tablaProductos, $item, $id, $order);
     
     
           $ventas = "ventas"; //item1
@@ -430,5 +434,116 @@
       }
       
     }
+  
+    public static function downloadReportController()
+    {
+      
+      if(isset($_GET['reporte'])){
+        
+        $table = 'ventas';
+      
+        if(isset($_GET['fechaInicial']) && isset($_GET['fechaFinal'])){
+        
+          $ventas = VentasModel::showRangeSalesDateModel($table,$_GET['fechaInicial'],$_GET['fechaFinal'] );
+        
+        }else {
+        
+          $item = null;
+          $valor = null;
+          
+          $ventas = VentasModel::showSalesModel($table, $item, $valor);
+        
+        }
+        
+        
+        //CREAR ARCHIVO DE EXCEL
+        
+        $NAME_FILE = $_GET['reporte'];
+        
+        header('Expires: 0');
+        header('Cache-control: private');
+        header('Content-type: application/vnd.ms-excel');
+        header('Cache-Control: cache, must-revalidate');
+        header('Content-Description: File Transfer');
+        header('Last-Modified:'. date('D, d M Y H:i:s'));
+        header('Pragma: public');
+        header('Content-Disposition: filename="'. $NAME_FILE .'"');
+        header('Content-Transfer-Encoding: binary');
+        
+        echo utf8_decode("<table style='border: 0'>
+                <tr>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Código</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Cliente</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Vendedor</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Cantidad</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Productos</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Impuesto</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Neto</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Total</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Método de Pago</td>
+                  <td style='font-weight: bold; border: 1px solid #eee;'>Fecha</td>
+                </tr>");
+  
+  
+        foreach($ventas as $row => $venta){
+          
+          $cliente = ClientesController::showClientsController('id', $venta['idCliente']);
+          $vendedor = UsuariosController::showUsersController('id', $venta['idVendedor']);
+          
+          echo utf8_decode("<tr>
+                  <td style='border: 1px solid #eee;'>". $venta['codigo']."</td>
+                  <td style='border: 1px solid #eee;'>". $cliente['nombre'].' '. $cliente['apellido']."</td>
+                  <td style='border: 1px solid #eee;'>". $vendedor['nombre'].' '. $vendedor['apellido']."</td>
+                  <td style='border: 1px solid #eee;'>");
+          
+          $productos = json_decode($venta['productos'], true);
+  
+          foreach($productos as $key => $valueProducto){
+          
+            echo utf8_decode($valueProducto['cantidad']. '<br>');
+          
+          }
+          
+          echo utf8_decode("</td> <td style='border: 1px solid #eee'>");
+  
+          foreach($productos as $key => $valueProducto){
+            
+            echo utf8_decode($valueProducto['descripcion'] . '<br>');
+            
+          }
+          
+          echo utf8_decode("</td>
+                  <td style='border: 1px solid #eee;'>Q ". number_format( $venta['impuesto'], 2)."</td>
+                  <td style='border: 1px solid #eee;'>Q ". number_format( $venta['neto'], 2)."</td>
+                  <td style='border: 1px solid #eee;'>Q ". number_format( $venta['total'], 2)."</td>
+                  <td style='border: 1px solid #eee;'>" .$venta['metodoPago']."</td>
+                  <td style='border: 1px solid #eee;'>". substr($venta['fecha'], 0, 10)."</td>
+ 
+ 
+ 
+                </tr>");
+          
+          
+        }
+        
+        
+        echo "</table>";
+        
+        
+      
+      }
+    }
+  
+  
+  
+    public static function showSumOfSalesController($valor){
+    
+      $tabla = 'ventas';
+    
+      return VentasModel::showSumOfSalesModel($tabla, $valor);
+    
+    }
+    
+    
   
   }

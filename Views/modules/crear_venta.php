@@ -1,3 +1,15 @@
+<?php
+
+if($_SESSION['perfil'] === "Especial"){
+  echo '<script>
+          window.location = "inicio";
+        </script>';
+  
+  return;
+}
+
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -98,7 +110,7 @@
                           <i class="fa fa-users"></i>
                         </span>
                         <div class="form-control" style="padding: 4px 0 2px 0px">
-                          <select class="selectData col-sm-12"
+                          <select class="selectData col-sm-12 col-12"
                                   id="selectClient"
                                   name="selectClient"
                                   required>
@@ -144,7 +156,7 @@
                     <hr>
   <!--                  impuesto y total-->
                     <div class="row">
-                      <div class="col-sm-5 ml-auto">
+                      <div class="col-sm-5 col-5 ml-auto">
                         <table class="table">
                           <thead>
                             <tr>
@@ -207,7 +219,7 @@
   <!--                    metodo de pago-->
                     
                     <div class="form-group row">
-                      <div class="col-sm-4">
+                      <div class="col-sm-4 col-4">
                           <select class="form-select"
                                   id="nuevoMetodoPago"
                                   name="nuevoMetodoPago"
@@ -271,11 +283,11 @@
                         style="width: 100%">
                     <thead>
                     <tr>
-                      <th style="width: 10px%" class="text-center">#</th>
+                      <th style="width: 10px;" class="text-center">#</th>
                       <th class="text-center">Imagen</th>
                       <th class="text-center">Código</th>
-                      <th class="text-center">Descripción</th>
-                      <th class="text-center">Stock/Existencias</th>
+                      <th style="width:10%;"class="text-center">Descripción</th>
+                      <th class="text-center">Stock</th>
                       <th class="text-center">Acciones</th>
                     </tr>
                     </thead>

@@ -79,9 +79,9 @@ $(".tableSales tbody").on("click", "button.agregarProducto", function(){
             }
 
             $(".newProduct").append(
-                '<div class="row" style="padding: 5px 15px">'+
+                '<div class="row" style="padding: 8px">'+
                 '  <!-- descripcion del producto-->\n' +
-'                    <div class="col-sm-6">\n' +
+'                    <div class="col-sm-6 col-6">\n' +
 '                      <div class="input-group">\n' +
 '                          <span class="input-group-text">\n' +
 '                            <button type="button" ' +
@@ -102,9 +102,10 @@ $(".tableSales tbody").on("click", "button.agregarProducto", function(){
 '                    </div>\n' +
 '\n' +
 '                    <!-- cantidad del producto-->\n' +
-'                    <div class="col-sm-3">\n' +
+'                    <div class="col-sm-2" style="padding: 3;">\n' +
 '                      <input type="number"\n' +
 '                             class="form-control nuevaCantidadProducto"\n' +
+                'style="padding: 2px"' +
 '                             name="nuevaCantidadProducto"\n' +
 '                             min="1"\n' +
 '                             value="1" \n' +
@@ -114,7 +115,8 @@ $(".tableSales tbody").on("click", "button.agregarProducto", function(){
 '                    </div>\n' +
 '\n' +
 '                    <!--precio del producto-->\n' +
-'                    <div class="col-sm-3 ingresoPrecio">\n' +
+'                    <div class="col-sm-4 ingresoPrecio"' +
+                'style="padding: 0">\n' +
 '                      <div class="input-group">\n' +
 '                          <span class="input-group-text">\n' +
 '                            <i class="fab fa-quora"></i>\n' +
@@ -692,7 +694,7 @@ $(".tablas").on("click", ".btnImprimirFactura", function(){
 //Date range as a button
 $('#daterange-btn').daterangepicker(
     {
-
+        opens: 'left',
         ranges   : {
             'Hoy'       : [moment(), moment()],
             'Ayer'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -732,7 +734,7 @@ $('#daterange-btn').on('cancel.daterangepicker', function (){
 
 
 //CAPTURAR EL DIA DE HOY
-$('.daterangepicker .ranges li').on('click', function (){
+$('.daterangepicker.opensleft .ranges li').on('click', function (){
    let atributoDatePickerHoy = $(this).attr('data-range-key');
 
    if(atributoDatePickerHoy === 'Hoy'){

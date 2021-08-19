@@ -1,9 +1,14 @@
 <?php
 
+
+
   class UsuariosController{
 
     // INGRESO DE USUARIOS
-    static public function controllerUsuarioIngreso(){
+    static public function loginUserController(){
+  
+      
+      
       if(isset($_POST["ingUsuario"])){
         if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
 
@@ -66,7 +71,7 @@
     }
 
     // MOSTRAR USUARIOS
-    static public function controllerMostrarUsuario($item, $valor){
+    static public function showUsersController($item, $valor){
 
       $tabla = "usuarios";
 
@@ -193,7 +198,7 @@
     }
 
     // EDITAR USUARIOS
-    static public function controllerEditarUsuario(){
+    static public function editUserController(){
       if(isset($_POST["editarUsuario"])){
         if(
            preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
@@ -341,7 +346,7 @@
     }
 
     // BORRAR USUARIO
-    static public function controllerBorrarUsuario(){
+    static public function deleteUserController(){
 
       if(isset($_GET["idUsuario"])){
 

@@ -12,7 +12,8 @@
 
       $item = "idCategoria";
       $valor = $this -> idCategoria;
-      $result = ProductosController::controllerMostrarProductos($item, $valor);
+      $order = 'id';
+      $result = ProductosController::showProductsController($item, $valor, $order);
   
       try{
         echo json_encode($result, JSON_THROW_ON_ERROR);
@@ -31,7 +32,8 @@
       if($this->traerProductos == "ok"){
         $item = null;
         $valor = null;
-        $response = ProductosController::controllerMostrarProductos($item, $valor);
+        $order = 'id';
+        $response = ProductosController::showProductsController($item, $valor, $order);
         
         try{
           echo json_encode($response, JSON_THROW_ON_ERROR);
@@ -43,7 +45,9 @@
 
         $item = "descripcion";
         $valor = $this->nombreProducto;
-        $response = ProductosController::controllerMostrarProductos($item, $valor);
+        $order = 'id';
+        
+        $response = ProductosController::showProductsController($item, $valor, $order);
 
         try{
           echo json_encode($response, JSON_THROW_ON_ERROR);
@@ -54,7 +58,8 @@
       }else{
         $item = "id";
         $valor = $this->idProduct;
-        $response = ProductosController::controllerMostrarProductos($item, $valor);
+        $order = 'id';
+        $response = ProductosController::showProductsController($item, $valor, $order);
   
         try{
           echo json_encode($response, JSON_THROW_ON_ERROR);
