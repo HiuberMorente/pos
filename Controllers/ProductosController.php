@@ -28,6 +28,11 @@ class ProductosController
         $ruta = "Views/img/productos/default/anonymous.png";
         
         // VALIDAR IMAGEN
+  
+        if($_FILES["nuevaImagen"]["tmp_name"] == ""){
+          $_FILES["nuevaImagen"]["tmp_name"] = "Views/img/productos/default/anonymous.png";
+        }
+
         if(isset($_FILES["nuevaImagen"]["tmp_name"])){
           
           

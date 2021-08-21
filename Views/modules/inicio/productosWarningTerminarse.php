@@ -40,7 +40,7 @@ $productos = ProductosController::showProductsController($item, $valor, $order);
             
             <div class="product-info">
             
-              <a href="" class="product-title">
+              <a href="productos" class="product-title">
               
              '. $producto["descripcion"] .'
                 <span class="badge badge-warning float-right" style="font-size: 16px">

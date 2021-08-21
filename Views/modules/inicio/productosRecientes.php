@@ -6,6 +6,8 @@ $order = 'id';
 
 $productos = ProductosController::showProductsController($item, $valor, $order);
 
+$countProductos = count($productos);
+
 ?>
 
 <div class="card card-success">
@@ -26,27 +28,68 @@ $productos = ProductosController::showProductsController($item, $valor, $order);
     <ul class="products-list product-list-in-card pl-2 pr-2">
       
       <?php
-      
-      for($i = 0; $i < 10; $i++){
-     
+
+
+      if(!empty($productos)){
+        for($i = 0; $i < $countProductos; $i++){
+          if($countProductos > 0 && $countProductos <= 10){
+            
+            echo '<li class="item">
+              <div class="product-img">
+                <img src="'. $productos[$i]["imagen"] .'" alt="Product Image" class="img-size-50">
+              </div>
+              
+              <div class="product-info">
+              
+                <a href="productos" class="product-title">
+                
+               '. $productos[$i]["descripcion"] .'
+                  <span class="badge badge-success float-right" style="font-size: 16px">
+                    Q '. number_format($productos[$i]["precioVenta"],2) .'
+                  </span>
+                </a>
+                
+              </div>
+              
+            </li>';
+          }else {
+            
+            for($i = 0; $i < 10; $i++){
+              echo '<li class="item">
+              <div class="product-img">
+                <img src="'. $productos[$i]["imagen"] .'" alt="Product Image" class="img-size-50">
+              </div>
+              
+              <div class="product-info">
+              
+                <a href="" class="product-title">
+                
+               '. $productos[$i]["descripcion"] .'
+                  <span class="badge badge-success float-right" style="font-size: 16px">
+                    Q '. number_format($productos[$i]["precioVenta"],2) .'
+                  </span>
+                </a>
+                
+              </div>
+              
+            </li>';
+            
+            }
+            
+          }
+          
+        }
+      }else{
+  
         echo '<li class="item">
-          <div class="product-img">
-            <img src="'. $productos[$i]["imagen"] .'" alt="Product Image" class="img-size-50">
-          </div>
-          
-          <div class="product-info">
-          
-            <a href="" class="product-title">
+            <div class="product-img">
+            </div>
             
-           '. $productos[$i]["descripcion"] .'
-              <span class="badge badge-success float-right" style="font-size: 16px">
-                Q '. number_format($productos[$i]["precioVenta"],2) .'
-              </span>
-            </a>
+            <div class="product-info">
             
-          </div>
-          
-        </li>';
+            </div>
+            
+          </li>';
         
       }
       ?>

@@ -1,3 +1,10 @@
+<?php
+
+$totalVentas = ProductosController::showSumOfSalesController();
+
+
+?>
+
 
 <div class="content-wrapper">
 
@@ -48,13 +55,60 @@
         ?>
       </div>
       
-      <div class="col-lg-6">
-        <?php
+      
+      <?php
+      if($totalVentas['total'] !== '0' && $totalVentas['total'] !== null){
+  
+        echo '<div class="col-lg-6">';
         if($_SESSION['perfil'] === 'Administrador'){
           include "reportes/productosMasVendidos.php";
         }
-        ?>
-      </div>
+        
+        echo '</div>';
+        
+        
+      }else {
+        
+        echo '<div class="card card-primary col-lg-6">
+  
+              <div class="card-header">
+                <h3 class="card-title">Productos más Vendidos</h3>
+                
+              </div>
+              
+              <div class="card-body">
+                <div class="row">
+                  
+                  <div class="col-md-7">
+                    <div class="chart-responsive">
+                    
+                    </div>
+                  </div>
+                 
+                  <div class="col-md-5">
+                    <ul class="chart-legend clearfix">
+                    
+                    </ul>
+                  </div>
+                 
+                </div>
+              </div>
+              
+            
+              <div class="card-footer bg-light p-0">
+                <ul class="nav nav-pills flex-column">
+                
+                
+                </ul>
+              </div>
+            
+              
+            </div>
+            ';
+        
+      }
+      
+      ?>
       
       
       <div class="col-lg-6">
@@ -83,7 +137,7 @@
       </div>
       
     </div>
-    
+
     <div class="row">
       <div class="col-lg-6">
         <?php
@@ -99,8 +153,9 @@
         }
         ?>
       </div>
-      
+
     </div>
+    
 
   </section>
 

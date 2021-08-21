@@ -25,7 +25,11 @@ $colorsPercentage = array('#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51')
 $totalVentas = ProductosController::showSumOfSalesController();
 
 
+
 ?>
+
+
+
 
 <div class="card card-primary">
   
@@ -65,20 +69,22 @@ $totalVentas = ProductosController::showSumOfSalesController();
     <ul class="nav nav-pills flex-column">
       
       <?php
+     
       for($i = 0; $i < 5; $i++){
-      
+  
         echo '<li class="nav-item">
-                <h6 class="nav-link">
-                  <img src="'.$productos[$i]['imagen'].'" alt="" width="50px" class="img-thumbnail">
-                
-                  '.$productos[$i]["descripcion"].'
-                  <span class="float-right" style="color: '.$colorsPercentage[$i].'; font-size: 20px; font-weight: bold;">
-                    '. ceil(($productos[$i]["ventas"] * 100) / $totalVentas["total"]) .'%
-                  </span>
-                </h6>
-              </li>';
-      
+              <h6 class="nav-link">
+                <img src="' . $productos[$i]['imagen'] . '" alt="" width="50px" class="img-thumbnail">
+              
+                ' . $productos[$i]["descripcion"] . '
+                <span class="float-right" style="color: ' . $colorsPercentage[$i] . '; font-size: 20px; font-weight: bold;">
+                  ' . ceil(($productos[$i]["ventas"] * 100) / $totalVentas["total"]) . '%
+                </span>
+              </h6>
+            </li>';
+  
       }
+      
       ?>
       
     </ul>
@@ -86,8 +92,6 @@ $totalVentas = ProductosController::showSumOfSalesController();
 
   
 </div>
-<!-- /.card -->
-
 
 
 

@@ -9,6 +9,7 @@ $productos = ProductosController::showProductsController($item, $valor, $order);
 
 
 
+
 ?>
 
 <div class="card card-danger">
@@ -32,7 +33,7 @@ $productos = ProductosController::showProductsController($item, $valor, $order);
       foreach($productos as $key => $producto){
         if($producto['stock'] > 0 && $producto['stock'] <= 10){
           
-     
+          
           echo '<li class="item">
             <div class="product-img">
               <img src="'. $producto["imagen"] .'" alt="Product Image" class="img-size-50">
@@ -40,7 +41,7 @@ $productos = ProductosController::showProductsController($item, $valor, $order);
             
             <div class="product-info">
             
-              <a href="" class="product-title">
+              <a href="productos" class="product-title">
               
              '. $producto["descripcion"] .'
                 <span class="badge badge-danger float-right" style="font-size: 16px">
