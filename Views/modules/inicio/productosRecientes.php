@@ -31,8 +31,8 @@ $countProductos = count($productos);
 
 
       if(!empty($productos)){
-        for($i = 0; $i < $countProductos; $i++){
-          if($countProductos > 0 && $countProductos <= 10){
+        for($i = 0; $i < 10; $i++){
+          
             
             echo '<li class="item">
               <div class="product-img">
@@ -52,32 +52,6 @@ $countProductos = count($productos);
               </div>
               
             </li>';
-          }else {
-            
-            for($i = 0; $i < 10; $i++){
-              echo '<li class="item">
-              <div class="product-img">
-                <img src="'. $productos[$i]["imagen"] .'" alt="Product Image" class="img-size-50">
-              </div>
-              
-              <div class="product-info">
-              
-                <a href="" class="product-title">
-                
-               '. $productos[$i]["descripcion"] .'
-                  <span class="badge badge-success float-right" style="font-size: 16px">
-                    Q '. number_format($productos[$i]["precioVenta"],2) .'
-                  </span>
-                </a>
-                
-              </div>
-              
-            </li>';
-            
-            }
-            
-          }
-          
         }
       }else{
   
