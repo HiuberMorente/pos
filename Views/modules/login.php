@@ -5,12 +5,20 @@ error_reporting(0);
  <div class="login-page">
    <div class="login-box">
      <div class="login-logo">
-       <img src="Views/img/plantilla/logo-blanco-bloque.png" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">
-<!--       <img src="Views/img/plantilla/ferreteria-png.jpg" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">-->
+<!--       <img src="Views/img/plantilla/logo-blanco-bloque.png" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">-->
+<!--       <img src="Views/img/plantilla/imagelog.jpg" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px-->
+<!--       100px">-->
      </div>
 
      <div class="card">
-       <div class="card-body login-card-body">
+       <div class="card-body login-card-body" style="border-radius: 100px">
+
+         <div class="login-logo">
+           <!--       <img src="Views/img/plantilla/logo-blanco-bloque.png" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">-->
+           <img src="Views/img/plantilla/imagelog.jpg" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px
+       100px">
+         </div>
+         
          <p class="login-box-msg text-gray">
            <strong>Ingresar al sistema</strong>
          </p>

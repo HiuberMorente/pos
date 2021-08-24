@@ -203,24 +203,15 @@ MODAL
               </div>
               
               <div class="nit">
-<!--                <div class="input-group mb-3">-->
-<!--                  <span class="input-group-text">-->
-<!--                    <i class="fa fa-key"></i>-->
-<!--                  </span>-->
-<!--                  <input type="number"-->
-<!--                         min="0"-->
-<!--                         class="form-control input-lg"-->
-<!--                         name="nuevoNIT"-->
-<!--                         placeholder="Ingresar NIT"-->
-<!--                         required>-->
-<!--                </div>-->
-              
+               
+                <input type="hidden"
+                       name="nuevoNIT"
+                       id="nuevoNITHide"
+                >
               </div>
 
-              <input type="hidden"
-                     name="nuevoNIT"
-                     id="nuevoNIT"
-              >
+              
+              
               
               <!-- email -->
               <div class="input-group mb-3">
@@ -289,7 +280,7 @@ MODAL
         <div class="modal-footer">
           <button type="button" class="btn btn-default d-flex" data-bs-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary ml-auto">Guardar cliente</button>
+          <button type="submit" class="btn btn-primary ml-auto" id="save">Guardar cliente</button>
 
         </div>
 
@@ -443,7 +434,7 @@ MODAL EDITAR
                   class="btn btn-default d-flex"
                   data-bs-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary ml-auto">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary ml-auto edit">Guardar cambios</button>
 
         </div>
 

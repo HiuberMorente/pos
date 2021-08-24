@@ -72,9 +72,16 @@ $bloque1 = <<<EOF
 <table>
 <tr>
 
+<!--<td style="width: 150px;">-->
+<!--<img src="images/logo-negro-bloque.png" alt="">-->
+<!--</td>-->
 <td style="width: 150px;">
-<img src="images/logo-negro-bloque.png" alt="">
+<p style="text-align: center">Ferretería Multiservicio <br>
+<img src="images/imagelog.jpg" alt="" width="50px" style="text-align: center">
+<br>
+<strong style="font-size: 20px">La Casa</strong></p>
 </td>
+
 
 <td style="background-color: white; width: 140px;">
 <div style="font-size: 9px; text-align: right; line-height: 15px;">
@@ -119,10 +126,12 @@ $bloque2 = <<<EOF
 
 <table style="font-size: 10px; padding: 5px 10px;">
 <tr>
-<td style="border: 1px solid #666; background-color: white; width: 390px"><strong>Cliente:</strong>
+<td style="border: 1px solid #666; background-color: white; width: 260px"><strong>Cliente:</strong>
 $responseCliente[nombre]
 $responseCliente[apellido]</td>
-<td style="border: 1px solid #666; background-color: white; width: 150px"><strong>Fecha:</strong> $fecha</td>
+<td style="border: 1px solid #666; background-color: white; width: 150px"><strong>NIT:</strong>
+$responseCliente[nit]</td>
+<td style="border: 1px solid #666; background-color: white; width: 130px"><strong>Fecha:</strong> $fecha</td>
 </tr>
 
 <tr>

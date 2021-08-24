@@ -1,13 +1,20 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="inicio" class="brand-link logo-switch">
+<!--    <a href="inicio" class="brand-link logo-switch">-->
+<!---->
+<!---->
+<!--    <img src="Views/img/plantilla/imagelog.jpg" alt="Logo1" class="brand-image-xs logo-xs">-->
+<!--   -->
+<!--    <img src="Views/img/plantilla/imagelog.jpg" alt="Logo2" class="brand-image-xs logo-xl" style="left: 12px">-->
+<!--    -->
+<!--    -->
+<!---->
+<!--    </a>-->
 
-
-    <img src="Views/img/plantilla/icono-blanco.png" alt="Logo1" class="brand-image-xs logo-xs">
-
-    <img src="Views/img/plantilla/logo-blanco-lineal.png" alt="Logo2" class="brand-image-xs logo-xl" style="left: 12px">
-
-    </a>
+  <a href="inicio" class="brand-link">
+    <img src="Views/img/plantilla/imagelog.jpg" alt="Logo1" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-bold">La Casa</span>
+  </a>
 
     <div class="sidebar">
 
