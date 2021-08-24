@@ -1,6 +1,40 @@
+$(document).ready(function (){
+    $('#selectNitCF').on('change', function (){
+        var selected = $(this).val();
+
+
+        if(selected === 'NIT'){
+            console.log('si es NIT 👋 👋 👋')
+            $(this).parent().parent().children('.nit').html('<div class="input-group mb-3">\n' +
+'                  <span class="input-group-text">\n' +
+'                    <i class="fa fa-key"></i>\n' +
+'                  </span>\n' +
+'                  <input type="number"\n' +
+'                         min="0"\n' +
+'                         class="form-control input-lg"\n' +
+'                         name="nuevoNIT"\n' +
+                '         id="nuevoNIT" ' +
+'                         placeholder="Ingresar NIT"\n' +
+'                         required>\n' +
+'            </div>')
+
+
+        }else{
+            $('#nuevoNIT').val('CF');
+            $(this).parent().parent().children('.nit').children().hide();
+
+        }
+
+    });
+});
+
+
+
+
 
 //editar cliente
-$(".btnEditClient").click(function(){
+$(".tableClient tbody").on('click', 'button.btnEditClient', function(){
+
    let idClient = $(this).attr("idClient");
 
    let data = new FormData();
@@ -15,7 +49,6 @@ $(".btnEditClient").click(function(){
        processData: false,
        dataType: "json",
        success: function(response){
-           console.log(response["direccion"]);
 
            $("#idClient").val(response["id"]);
            $("#editarClienteNombre").val(response["nombre"]);

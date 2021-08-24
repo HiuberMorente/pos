@@ -7,7 +7,7 @@
      if(isset($_POST["nuevoClienteNombre"])){
        if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoClienteNombre"]) &&
            preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoClienteApellido"]) &&
-           preg_match('/^[0-9]+$/', $_POST["nuevoNIT"]) &&
+           preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoNIT"]) &&
            filter_var($_POST["nuevoEmail"], FILTER_VALIDATE_EMAIL) &&
            preg_match('/^[\+0-9\-\(\)\s]+$/', $_POST["nuevoTelefono"]) &&
            preg_match('/^[\#\.\/a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"])
@@ -69,7 +69,7 @@
     if(isset($_POST["editarClienteNombre"])){
       if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarClienteNombre"]) &&
           preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarClienteApellido"]) &&
-          preg_match('/^[0-9]+$/', $_POST["editarNIT"]) &&
+          preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarNIT"]) &&
           filter_var($_POST["editarEmail"], FILTER_VALIDATE_EMAIL)&&
           preg_match('/^[\+0-9\-\(\)\s]+$/', $_POST["editarTelefono"]) &&
           preg_match('/^[\#\.\/a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])
@@ -144,4 +144,5 @@
         }
       }
     }
+  
   }

@@ -9,6 +9,7 @@
     
     }
     
+    
     public static function showRangeSalesDateController($fechaInicial, $fechaFinal){
   
       $table = "ventas";
@@ -16,6 +17,7 @@
       return VentasModel::showRangeSalesDateModel($table, $fechaInicial, $fechaFinal);
     
     }
+    
     
     public static function createSaleController(){
       
@@ -291,6 +293,7 @@
     
     }
   
+    
     public static function deleteSaleController(){
       
       if(isset($_GET['idVenta'])){
@@ -435,6 +438,7 @@
       
     }
   
+    
     public static function downloadReportController()
     {
       
@@ -534,8 +538,7 @@
       }
     }
   
-  
-  
+    
     public static function showSumOfSalesController($valor){
     
       $tabla = 'ventas';

@@ -384,7 +384,7 @@ $(".productTable tbody").on("click", "button.btnEditProducts", function(){
       $("#editarPrecioCompra").val(response['precioCompra']);
       $("#editarPrecioVenta").val(response['precioVenta']);
 
-      if(response['imagen'] != ""){
+      if(response['imagen'] !== ""){
         $("#imagenActual").val(response['imagen']);
         $(".previsualizar").attr("src", response["imagen"]);
       }

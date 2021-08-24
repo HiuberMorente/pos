@@ -54,7 +54,7 @@ if($_SESSION['perfil'] === "Especial"){
         <div class="row">
           <div class="col-lg-12">
             <table id="tabla"
-                   class="table table-bordered table-striped display nowrap"
+                   class="table table-bordered table-striped display nowrap tableClient"
                    cellspacing="0";
                    style="width: 100%">
               <thead>
@@ -187,18 +187,40 @@ MODAL
                        required>
               </div>
               
-              <!-- dpi -->
+              <!-- nit -->
+              
               <div class="input-group mb-3">
                 <span class="input-group-text">
-                  <i class="fa fa-key"></i>
+                <i class="fas fa-chevron-down"></i>
                 </span>
-                <input type="number"
-                       min="0"
-                       class="form-control input-lg"
-                       name="nuevoNIT"
-                       placeholder="Ingresar NIT"
-                       required>
+                <select name="selectNitCF"
+                        id="selectNitCF"
+                        class="form-select">
+                  <option value="">Seleccione Tipo de Documento</option>
+                  <option value="CF">C.F.</option>
+                  <option value="NIT">NIT</option>
+                </select>
               </div>
+              
+              <div class="nit">
+<!--                <div class="input-group mb-3">-->
+<!--                  <span class="input-group-text">-->
+<!--                    <i class="fa fa-key"></i>-->
+<!--                  </span>-->
+<!--                  <input type="number"-->
+<!--                         min="0"-->
+<!--                         class="form-control input-lg"-->
+<!--                         name="nuevoNIT"-->
+<!--                         placeholder="Ingresar NIT"-->
+<!--                         required>-->
+<!--                </div>-->
+              
+              </div>
+
+              <input type="hidden"
+                     name="nuevoNIT"
+                     id="nuevoNIT"
+              >
               
               <!-- email -->
               <div class="input-group mb-3">
@@ -340,13 +362,12 @@ MODAL EDITAR
                        required>
               </div>
 
-              <!-- dpi -->
+              <!-- nit -->
               <div class="input-group mb-3">
                 <span class="input-group-text">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="number"
-                       min="0"
+                <input type="text"
                        class="form-control input-lg"
                        name="editarNIT"
                        id="editarNIT"

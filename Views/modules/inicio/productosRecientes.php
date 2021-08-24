@@ -68,9 +68,6 @@ $countProductos = count($productos);
       }
       ?>
       
-      
-  
-     
     </ul>
   </div>
 

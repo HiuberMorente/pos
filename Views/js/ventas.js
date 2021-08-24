@@ -499,7 +499,7 @@ $("#nuevoTotalVenta").number(true, 2);
 $('#nuevoMetodoPago').change(function (){
     let metodo = $(this).val();
 
-    if(metodo == "Efectivo"){
+    if(metodo === "Efectivo"){
 
         $(this).parent().removeClass('col-sm-6');
         $(this).parent().addClass('col-sm-4');
@@ -574,7 +574,6 @@ $('#nuevoMetodoPago').change(function (){
 $('.formularioVenta').on('change', 'input#nuevoValorEfectivo', function (){
 
     let efectivo = $(this).val();
-    console.log(efectivo);
 
     let cambio = Number(efectivo) - Number($('#nuevoTotalVenta').val());
 
