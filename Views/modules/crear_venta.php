@@ -219,7 +219,7 @@ if($_SESSION['perfil'] === "Especial"){
   <!--                    metodo de pago-->
                     
                     <div class="form-group row">
-                      <div class="col-sm-6 col-lg-4 col-4">
+                      <div class="col-sm-6 col-lg-6 col-4">
                           <select class="form-select"
                                   id="nuevoMetodoPago"
                                   name="nuevoMetodoPago"
