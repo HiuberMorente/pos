@@ -156,7 +156,7 @@ if($_SESSION['perfil'] === "Especial"){
                     <hr>
   <!--                  impuesto y total-->
                     <div class="row">
-                      <div class="col-sm-6 col-12 ml-auto">
+                      <div class="col-sm-4 col-12 ml-auto">
                         <table class="table">
                           <thead>
                             <tr>
