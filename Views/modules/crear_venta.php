@@ -109,7 +109,7 @@ if($_SESSION['perfil'] === "Especial"){
                         <span class="input-group-text">
                           <i class="fa fa-users"></i>
                         </span>
-                        <div class="form-control" style="padding: 4px 0 2px 0px">
+                        <div class="form-control" style="padding: 4px 0 2px 0">
                           <select class="selectData col-sm-12 col-12"
                                   id="selectClient"
                                   name="selectClient"
@@ -219,7 +219,7 @@ if($_SESSION['perfil'] === "Especial"){
   <!--                    metodo de pago-->
                     
                     <div class="form-group row">
-                      <div class="col-sm-4 col-4">
+                      <div class="col-sm-4 col-12">
                           <select class="form-select"
                                   id="nuevoMetodoPago"
                                   name="nuevoMetodoPago"
