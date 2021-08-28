@@ -20,7 +20,7 @@ class ProductosController
   {
     
     if(isset($_POST["nuevaDescripcion"])){
-      if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) &&
+      if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\"\,\/\*\-\ ]+$/', $_POST["nuevaDescripcion"]) &&
           preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&
           preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) &&
           preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])){
@@ -92,7 +92,7 @@ class ProductosController
         $data = array(
             "idCategoria" => $_POST["nuevaCategoria"],
             "codigo" => $_POST["nuevoCodigo"],
-            "descripcion" => $_POST["nuevaDescripcion"],
+            "descripcion" => limpiarDatos($_POST["nuevaDescripcion"]),
             "stock" => $_POST["nuevoStock"],
             "precioCompra" => $_POST["nuevoPrecioCompra"],
             "precioVenta" => $_POST["nuevoPrecioVenta"],
@@ -137,7 +137,7 @@ class ProductosController
   
   public static function editProductController(){
     if(isset($_POST["editarDescripcion"])){
-      if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDescripcion"]) &&
+      if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\"\,\/\*\-\ ]+$/', $_POST["editarDescripcion"]) &&
           preg_match('/^[0-9]+$/', $_POST["editarStock"]) &&
           preg_match('/^[0-9.]+$/', $_POST["editarPrecioCompra"]) &&
           preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])){
@@ -209,7 +209,7 @@ class ProductosController
         $data = array(
             "idCategoria" => $_POST["editarCategoria"],
             "codigo" => $_POST["editarCodigo"],
-            "descripcion" => $_POST["editarDescripcion"],
+            "descripcion" => limpiarDatos($_POST["editarDescripcion"]),
             "stock" => $_POST["editarStock"],
             "precioCompra" => $_POST["editarPrecioCompra"],
             "precioVenta" => $_POST["editarPrecioVenta"],

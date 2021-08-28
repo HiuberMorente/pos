@@ -1,5 +1,7 @@
 <?php
 
+require_once "funciones/funciones.php";
+
 require_once "Controllers/PlantillaController.php";
 require_once "Controllers/CategoriasController.php";
 require_once "Controllers/ClientesController.php";
