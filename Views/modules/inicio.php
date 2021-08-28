@@ -57,15 +57,16 @@ $totalVentas = ProductosController::showSumOfSalesController();
       
       
       <?php
-      if($totalVentas['total'] !== '0' && $totalVentas['total'] !== null){
-  
-        echo '<div class="col-lg-6">';
-        if($_SESSION['perfil'] === 'Administrador'){
-          include "reportes/productosMasVendidos.php";
-        }
-        
-        echo '</div>';
-        
+      if($_SESSION['perfil'] === 'Administrador'){
+        if($totalVentas['total'] !== '0' && $totalVentas['total'] !== null){
+    
+          echo '<div class="col-lg-6">';
+         
+            include "reportes/productosMasVendidos.php";
+          
+          
+          echo '</div>';
+      }
         
       }else {
         
