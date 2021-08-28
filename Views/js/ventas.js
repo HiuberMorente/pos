@@ -1,4 +1,4 @@
-Sa//VARIABLE LOCALSTORAGE
+//VARIABLE LOCALSTORAGE
 
 if(localStorage.getItem('capturarRango') != null){
 
