@@ -156,7 +156,7 @@ if($_SESSION['perfil'] === "Especial"){
                     <hr>
   <!--                  impuesto y total-->
                     <div class="row">
-                      <div class="col-sm-5 col-5 ml-auto">
+                      <div class="col-sm-6 col-12 ml-auto">
                         <table class="table">
                           <thead>
                             <tr>
@@ -189,7 +189,7 @@ if($_SESSION['perfil'] === "Especial"){
                                        name="nuevoPrecioNeto"
                                        id="nuevoPrecioNeto" required>
                                 
-                                <div class="input-group input-group-lg col-12">
+                                <div class="input-group input-group-lg">
                                   <span class="input-group-text">
                                     <i class="fab fa-quora"></i>
                                   </span>
