@@ -10,7 +10,7 @@
            preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoNIT"]) &&
            filter_var($_POST["nuevoEmail"], FILTER_VALIDATE_EMAIL) &&
            preg_match('/^[\+0-9\-\(\)\s]+$/', $_POST["nuevoTelefono"]) &&
-           preg_match('/^[\#\.\/a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"])
+           preg_match('/^[\#\.\-\,\/a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"])
        ){
         $table = "clientes";
         
@@ -70,9 +70,9 @@
       if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarClienteNombre"]) &&
           preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarClienteApellido"]) &&
           preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarNIT"]) &&
-          filter_var($_POST["editarEmail"], FILTER_VALIDATE_EMAIL)&&
+      \    filter_var($_POST["editarEmail"], FILTER_VALIDATE_EMAIL)&&
           preg_match('/^[\+0-9\-\(\)\s]+$/', $_POST["editarTelefono"]) &&
-          preg_match('/^[\#\.\/a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])
+          preg_match('/^[\#\.\,\-\/a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])
       ){
         $table = "clientes";
         
