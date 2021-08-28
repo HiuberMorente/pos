@@ -504,7 +504,7 @@ $('#nuevoMetodoPago').change(function (){
         $(this).parent().removeClass('col-sm-6');
         $(this).parent().addClass('col-sm-4');
         $(this).parent().parent().children('.cajasMetodoPago').html(
-            '<div class="form-group col-sm-6">' +
+            '<div class="form-group col-sm-6 col-12">' +
                 '<div class="input-group">' +
                 '   <span class="input-group-text">' +
                 '       <i class="fab fa-quora"></i>'+
@@ -518,9 +518,8 @@ $('#nuevoMetodoPago').change(function (){
                 '</div>' +
             '</div>' +
 
-                '<div class="form-group col-sm-6"' +
-                '     id="capturarCambioEfectivo"' +
-                '     style="padding-left: 0">' +
+                '<div class="form-group col-sm-6 col-12"' +
+                '     id="capturarCambioEfectivo">' +
                 '   <div class="input-group">' +
                 '       <span class="input-group-text">' +
                 '           <i class="fab fa-quora"></i>'+
