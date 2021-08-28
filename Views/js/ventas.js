@@ -501,7 +501,7 @@ $('#nuevoMetodoPago').change(function (){
 
     if(metodo === "Efectivo"){
 
-        $(this).parent().removeClass('col-sm-4');
+        $(this).parent().removeClass('col-sm-6');
         $(this).parent().addClass('col-sm-4');
         $(this).parent().parent().children('.cajasMetodoPago').html(
             '<div class="form-group col-sm-6 col-12">' +
