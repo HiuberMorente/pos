@@ -1,4 +1,4 @@
-//VARIABLE LOCALSTORAGE
+Sa//VARIABLE LOCALSTORAGE
 
 if(localStorage.getItem('capturarRango') != null){
 
@@ -518,7 +518,7 @@ $('#nuevoMetodoPago').change(function (){
                 '</div>' +
             '</div>' +
 
-                '<div class="form-group col-sm-6 col-12"' +
+                '<div class="form-group col-sm-4 col-12"' +
                 '     id="capturarCambioEfectivo">' +
                 '   <div class="input-group">' +
                 '       <span class="input-group-text">' +
