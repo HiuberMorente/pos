@@ -189,7 +189,7 @@ if($_SESSION['perfil'] === "Especial"){
                                        name="nuevoPrecioNeto"
                                        id="nuevoPrecioNeto" required>
                                 
-                                <div class="input-group input-group-lg">
+                                <div class="input-group input-group-lg col-12">
                                   <span class="input-group-text">
                                     <i class="fab fa-quora"></i>
                                   </span>
