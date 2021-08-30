@@ -26,7 +26,7 @@
 //      );
       
       $link = new PDO(
-         "ec2-3-222-11-129.compute-1.amazonaws.com;dbname=d9olkh54oodcas",
+         "postgres:host=ec2-3-222-11-129.compute-1.amazonaws.com;dbname=d9olkh54oodcas",
          "sdyoobmitxkzkm",
          "6cce158829788c5aafc72a20d68a43db78b87bbf75a6a9a434b161872a68ece8"
       );
